@@ -5,12 +5,12 @@ public class Textbox extends Actor
     private String dialog;
     private int textIndex = 0;
     private int frameCount = 0;
-    private int speed = 3; // Controls the speed of typewriting effect
-    private int spacePauseDuration = 2; // Pause for spaces
-    private int lineHeight = 20; // Height of each line of text
-    private int margin = 10; // Margin from the edges
-    private int maxWidth = 290; // Maximum width of text area
-    private int letterCount = 0; // Count of letters typed, used for animation
+    private int speed = 3; 
+    private int spacePauseDuration = 2; 
+    private int lineHeight = 20;
+    private int margin = 10; 
+    private int maxWidth = 290; 
+    private int letterCount = 0; // count of letters typed, used for animation
     private Customer customer;
     private Color opaqueWhite = new Color(255, 255, 255, 200);
     private boolean isSpacePause = false;

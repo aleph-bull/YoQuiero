@@ -10,25 +10,31 @@ public class OrderingWorld extends World
 {
     private static Random rand = new Random();
     private CookingWorld cookingTab = new CookingWorld(this);
+    private PlateBack plate;
     
     private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Suspicious Dog", "Hot Dog", "Imposter Dog"};
     private int customerTypeNumber;
     private String customerTypeName;
     private boolean customerOrdering = false; 
+    private boolean plateDisplayed = false;
+    private boolean justMovedWorld = false;
+    
     private Register counter = new Register();
     
     public OrderingWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        
+        setPaintOrder(PlateBack.class, Register.class,Customer.class);
         addObject(counter, 300, 200);
     }
     
     public void act(){
         if(Greenfoot.isKeyDown("k")){
+            movedWorld(true);
             Greenfoot.setWorld(cookingTab);
         }
+        
         newCustomer();
     }
     
@@ -40,8 +46,14 @@ public class OrderingWorld extends World
             
             addObject(new Customer(customerTypeNumber, customerTypeName), 200, 500);
             
-            removeObject(counter);
-            addObject(counter, 300, 200); //resets counter to make it appear on top
         }
+    }
+    
+    public void movedWorld(boolean justMovedWorld) {
+        this.justMovedWorld = justMovedWorld;
+    }
+    
+    public boolean didWorldMove() {
+        return justMovedWorld;
     }
 }
