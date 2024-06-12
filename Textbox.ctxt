@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Textbox
+comment1.params=dialog\ customer
+comment1.target=Textbox(java.lang.String,\ Customer)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=letter
+comment3.target=void\ typeWrite(char)
+comment4.params=text
+comment4.target=int\ getTextWidth(java.lang.String)
+comment5.params=count
+comment5.target=void\ animateCustomerSpeaking(int)
+numComments=6
