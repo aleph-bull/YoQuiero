@@ -7,7 +7,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class CookingWorld extends World
 {
     private OrderingWorld orderTab;
+    private BuildingWorld buildTab;
+    
     private PlateBack plate;
+    //flags to prevent instant skipping
+    private boolean kWasDown = false;
+    private boolean hWasDown = false;
+    private boolean firstWorldSwitch = true;
     /**
      * Constructor for objects of class CookingWorld.
      * 
@@ -22,6 +28,8 @@ public class CookingWorld extends World
         addObject(new PlateFront(), 310, 320);
         
         this.orderTab = orderTab;
+        buildTab = new BuildingWorld(this, orderTab, plate);
+        
     }
     
     public void act() {
@@ -29,17 +37,32 @@ public class CookingWorld extends World
         
         if(orderTab.didWorldSwitch()){
             plate = orderTab.getPlate();
-            addObject(plate, 310, 320);
-            addObject(new Beef(plate), 125, 120);
+            if(firstWorldSwitch) {
+                addObject(new Beef(plate), 125, 120);
+                firstWorldSwitch = false;
+            }
+            kWasDown = true;
+            hWasDown = true;
             orderTab.SwitchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("g")) {
+        if(Greenfoot.isKeyDown("h") && !kWasDown && !hWasDown) {
             removeObject(plate);
             orderTab.SwitchedWorld(true);
+            orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
+                                      320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
+        } else if (Greenfoot.isKeyDown("k") && !kWasDown && !hWasDown) {
+            removeObject(plate);
+            orderTab.SwitchedWorld(true);
+            buildTab.addObject(plate, 310 + buildTab.getPlateDisplacement(true), 
+                                      320 + buildTab.getPlateDisplacement(false));
+
+            Greenfoot.setWorld(buildTab);
         }
         
+        kWasDown = Greenfoot.isKeyDown("k");
+        hWasDown = Greenfoot.isKeyDown("h");
     }
     
     //spawns beef when container is pressed
@@ -61,5 +84,9 @@ public class CookingWorld extends World
     
     public PlateBack getPlate(){
         return plate;
+    }
+    
+    public BuildingWorld getBuildTab(){
+        return buildTab;
     }
 }

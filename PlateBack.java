@@ -5,6 +5,7 @@ public class PlateBack extends Actor
 {
     private Customer customer;
     private OrderingWorld orderTab;
+    private BuildingWorld buildTab;
     
     private ArrayList <BeefStatic> beefPicList = new ArrayList <BeefStatic>();
     private ArrayList <Integer> beefArray = new ArrayList <>();
@@ -15,21 +16,27 @@ public class PlateBack extends Actor
     
     public PlateBack(OrderingWorld orderTab) {
         this.orderTab = orderTab;
+        this.buildTab = orderTab.getBuildTab();
     }
     
     public void act()
     {
-        //System.out.println(beefArray);
-        
-        if(getWorld() == orderTab && orderTab.didWorldSwitchActor()){
+        if((getWorld() == orderTab || getWorld() == buildTab) && orderTab.didWorldSwitchActor()){
             System.out.println("XXXXX");
+            int displacementY = orderTab.getPlateDisplacement(false);
+            int displacementX = orderTab.getPlateDisplacement(true);
             
+            if(getWorld() == buildTab) {
+                displacementY = buildTab.getPlateDisplacement(false);
+                displacementX = buildTab.getPlateDisplacement(true);
+            }
             
             for(int i = 0; i < beefAmount; i++) {
                 BeefStatic beefImage = new BeefStatic();
                 beefPicList.add(beefImage);
                 int[] pos = (int[]) beefPosition.get(i);
-                getWorld().addObject(beefImage, pos[0], pos[1]);
+                getWorld().addObject(beefImage, pos[0] + displacementX, 
+                                                pos[1] + displacementY);
                 beefImage.setImage("beef" + beefArray.get(i) + ".png");
                 orderTab.SwitchedWorldActor(false);
                 

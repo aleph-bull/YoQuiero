@@ -9,14 +9,15 @@ import java.util.Random;
 public class OrderingWorld extends World
 {
     private static Random rand = new Random();
-    private CookingWorld cookingTab = new CookingWorld(this);
+    private CookingWorld cookTab = new CookingWorld(this);
     private PlateBack plate;
+    private int plateDisplacementX = 40;
+    private int plateDisplacementY = -35;
     
     private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Skeptical Dog", "Hot Dog", "Canine-ibal Dog", "Blooming Dog"};
     private int customerTypeNumber;
     private String customerTypeName;
     private boolean customerOrdering = false; 
-    private boolean plateDisplayed = false;
     private boolean justSwitchedWorld = false;
     private boolean justSwitchedWorldActor = false; //same thing but for actors since an actor's act() method runs after a world's
     
@@ -27,26 +28,25 @@ public class OrderingWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         plate = new PlateBack(this);
-        addObject(plate, 310, 320);
-        
         setPaintOrder(PlateFront.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
         
-        addObject(new PlateFront(), 310, 320);
+        addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
+        addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
         addObject(counter, 300, 200);
     }
     
     public void act(){
         if(didWorldSwitch()){
             plate = getPlate();
-            addObject(plate, 310, 320);
             SwitchedWorld(false);
         }
         
         if(Greenfoot.isKeyDown("k")){
             plate.removeBeefs();
             removeObject(plate);
+            cookTab.addObject(plate, 310, 320);
             SwitchedWorld(true);
-            Greenfoot.setWorld(cookingTab);
+            Greenfoot.setWorld(cookTab);
         }
         
         newCustomer();
@@ -82,8 +82,18 @@ public class OrderingWorld extends World
         return justSwitchedWorldActor;
     }
     
+    public int getPlateDisplacement(boolean getX) {
+        if(getX) {
+            return plateDisplacementX;
+        }
+        return plateDisplacementY;
+    }
     
     public PlateBack getPlate(){
         return plate;
+    }
+    
+    public BuildingWorld getBuildTab(){
+        return cookTab.getBuildTab();
     }
 }

@@ -14,6 +14,7 @@ public class Textbox extends Actor
     private Customer customer;
     private Color opaqueWhite = new Color(255, 255, 255, 200);
     private boolean isSpacePause = false;
+    private boolean alreadyChangedSpeaking = false;
 
     public Textbox(String dialog, Customer customer) {
         this.customer = customer;
@@ -42,8 +43,12 @@ public class Textbox extends Actor
                     isSpacePause = true;
                     frameCount = 0;
                 }
+            } else if(textIndex >= dialog.length() && !alreadyChangedSpeaking) {
+                customer.changeIsSpeaking(false);
+                alreadyChangedSpeaking = true;
             }
         }
+        
         frameCount++;
     }
 

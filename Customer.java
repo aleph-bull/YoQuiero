@@ -18,16 +18,16 @@ public class Customer extends Actor
                                     "Salutations good sir, I would be delighted to have ", "I'm so hungry, I could eat ", 
                                     "Mmmm I really need ", "Jeez, I could really go for some ", "Hey tubby, give me ", 
                                     "Hey Joe, fetch me ", "Woof. I am a dog who likes ", "I got an itching for some ",
-                                    "Yum yum yum! I'm excited for ", "Yo quireo Taco Bell! No? Fine I'll just get ",
-                                    "I am a dog. I like ", "Do you serve vegan options? I'll have "};
+                                    "Yum yum yum! I'm excited for ", "Yo quiero Taco Bell! No? Fine I'll just get ",
+                                    "I am a dog. I like ", "Do you serve vegan options? I'll have ", "Hola! Yo quiero "};
     private String[][][] beefDialog = 
     {
         {//beef
-            {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge"},  //raw
-            {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef"},   //rare
-            {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well"},    //medium
-            {"well beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all"},   //well
-            {"ashy beef", "non-vegan coal", "animal carbon", "cancer causing beef", "combustible beef rock"}//ash
+            {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge", "res cruda"},         //raw
+            {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef" , "carne rara"},        //rare
+            {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well", "carne cocida"},        //medium
+            {"well done beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all", "carne recocida"},     //well
+            {"ashy beef", "non-vegan coal", "animal carbon", "cancer causing beef", "combustible beef rock", "carbón de res"}   //ash
         },
         { //veggie
             {}
@@ -101,6 +101,10 @@ public class Customer extends Actor
                 textSpawned = true;
             }
         }
+    }
+    
+    public void changeIsSpeaking(boolean isSpeaking) {
+         this.isSpeaking = isSpeaking;
     }
     
     public int getDesiredMeat(){
