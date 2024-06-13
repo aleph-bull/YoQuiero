@@ -95,7 +95,6 @@ public class Textbox extends Actor
         } else {
             customer.setLocation(customer.getX(), customer.getY()+10);
         }
-        System.out.println(count % 20);
         Greenfoot.playSound("dogTalking" + (count % 20) + ".wav");
     }
 }

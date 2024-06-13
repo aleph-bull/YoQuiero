@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CookingWorld extends World
 {
-    OrderingWorld orderTab;
+    private OrderingWorld orderTab;
     private PlateBack plate;
     /**
      * Constructor for objects of class CookingWorld.
@@ -16,28 +16,30 @@ public class CookingWorld extends World
     public CookingWorld(OrderingWorld orderTab)
     {     
         super(600, 400, 1);
-        if(plate == null){ 
-            plate = new PlateBack();
-        }
+        plate = orderTab.getPlate();
         setPaintOrder(Beef.class, PlateFront.class, BeefStatic.class);
-        addObject(plate, 300, 320);
-        addObject(new Beef(plate), 125, 120);
-        addObject(new PlateFront(), 300, 320);
+        
+        addObject(new PlateFront(), 310, 320);
         
         this.orderTab = orderTab;
     }
     
     public void act() {
         grabBeef();
+        
+        if(orderTab.didWorldSwitch()){
+            plate = orderTab.getPlate();
+            addObject(plate, 310, 320);
+            addObject(new Beef(plate), 125, 120);
+            orderTab.SwitchedWorld(false);
+        }
+        
         if(Greenfoot.isKeyDown("g")) {
-            orderTab.movedWorld(true);
+            removeObject(plate);
+            orderTab.SwitchedWorld(true);
             Greenfoot.setWorld(orderTab);
         }
         
-        if(orderTab.didWorldMove()) {
-            addObject(plate, 300, 320);
-            orderTab.movedWorld(false);
-        }
     }
     
     //spawns beef when container is pressed

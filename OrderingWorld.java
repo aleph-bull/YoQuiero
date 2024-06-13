@@ -12,12 +12,13 @@ public class OrderingWorld extends World
     private CookingWorld cookingTab = new CookingWorld(this);
     private PlateBack plate;
     
-    private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Suspicious Dog", "Hot Dog", "Imposter Dog"};
+    private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Skeptical Dog", "Hot Dog", "Canine-ibal Dog", "Blooming Dog"};
     private int customerTypeNumber;
     private String customerTypeName;
     private boolean customerOrdering = false; 
     private boolean plateDisplayed = false;
-    private boolean justMovedWorld = false;
+    private boolean justSwitchedWorld = false;
+    private boolean justSwitchedWorldActor = false; //same thing but for actors since an actor's act() method runs after a world's
     
     private Register counter = new Register();
     
@@ -25,13 +26,26 @@ public class OrderingWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        setPaintOrder(PlateBack.class, Register.class,Customer.class);
+        plate = new PlateBack(this);
+        addObject(plate, 310, 320);
+        
+        setPaintOrder(PlateFront.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
+        
+        addObject(new PlateFront(), 310, 320);
         addObject(counter, 300, 200);
     }
     
     public void act(){
+        if(didWorldSwitch()){
+            plate = getPlate();
+            addObject(plate, 310, 320);
+            SwitchedWorld(false);
+        }
+        
         if(Greenfoot.isKeyDown("k")){
-            movedWorld(true);
+            plate.removeBeefs();
+            removeObject(plate);
+            SwitchedWorld(true);
             Greenfoot.setWorld(cookingTab);
         }
         
@@ -49,11 +63,27 @@ public class OrderingWorld extends World
         }
     }
     
-    public void movedWorld(boolean justMovedWorld) {
-        this.justMovedWorld = justMovedWorld;
+    public void SwitchedWorld(boolean justSwitchedWorld) {
+        this.justSwitchedWorld = justSwitchedWorld;
+        if(justSwitchedWorld) {
+            justSwitchedWorldActor = justSwitchedWorld;
+        }
     }
     
-    public boolean didWorldMove() {
-        return justMovedWorld;
+    public void SwitchedWorldActor(boolean justSwitchedWorld) {
+        justSwitchedWorldActor = justSwitchedWorld;
+    }
+    
+    public boolean didWorldSwitch() {
+        return justSwitchedWorld;
+    }
+    
+    public boolean didWorldSwitchActor() {
+        return justSwitchedWorldActor;
+    }
+    
+    
+    public PlateBack getPlate(){
+        return plate;
     }
 }
