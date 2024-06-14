@@ -38,14 +38,14 @@ public class OrderingWorld extends World
     public void act(){
         if(didWorldSwitch()){
             plate = getPlate();
-            SwitchedWorld(false);
+            switchedWorld(false);
         }
         
         if(Greenfoot.isKeyDown("k")){
             plate.removeBeefs();
             removeObject(plate);
             cookTab.addObject(plate, 310, 320);
-            SwitchedWorld(true);
+            switchedWorld(true);
             Greenfoot.setWorld(cookTab);
         }
         
@@ -63,14 +63,14 @@ public class OrderingWorld extends World
         }
     }
     
-    public void SwitchedWorld(boolean justSwitchedWorld) {
+    public void switchedWorld(boolean justSwitchedWorld) {
         this.justSwitchedWorld = justSwitchedWorld;
         if(justSwitchedWorld) {
             justSwitchedWorldActor = justSwitchedWorld;
         }
     }
     
-    public void SwitchedWorldActor(boolean justSwitchedWorld) {
+    public void switchedWorldActor(boolean justSwitchedWorld) {
         justSwitchedWorldActor = justSwitchedWorld;
     }
     

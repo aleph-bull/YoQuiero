@@ -11,7 +11,14 @@ public class BuildingWorld extends World
     private CookingWorld cookTab;
     private OrderingWorld orderTab;
     private CuttingBoard cuttingBoard = new CuttingBoard();
+    private CuttingKnife cuttingKnife = new CuttingKnife();
     private PlateBack plate;
+    
+    private boolean firstWorldSwitch = true;
+    private boolean pumpkinSpawned = false;
+    private boolean watermelonSpawned = false; 
+    private boolean eggShellSpawned = false; 
+    private boolean peanutButterSpawned = false; 
     private int plateDisplacementX = 150;
     private int plateDisplacementY = -55;
     
@@ -23,26 +30,102 @@ public class BuildingWorld extends World
         this.orderTab = orderTab;
         this.plate = plate;
         
-        setPaintOrder(CuttingKnife.class, Beef.class, PlateFront.class);
+        setPaintOrder(CuttingKnife.class, Pumpkin.class, Watermelon.class, PlateFront.class);
         
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
         
         addObject(cuttingBoard, 470, 150);
+        addObject(cuttingKnife, 550, 160);
     }
     
     public void act() {
+        grabPumpkin();
+        grabWatermelon();
+        grabEggShell();
+        grabPeanutButter();
+        
         if(orderTab.didWorldSwitch()){
             plate = orderTab.getPlate();
             addObject(plate, 310, 320);
-            orderTab.SwitchedWorld(false);
+            if(firstWorldSwitch) {
+                addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife), 100, 120);
+                addObject(new Watermelon(plate, cuttingBoard, cuttingKnife), 260, 120);
+                addObject(new EggShell(plate, cuttingBoard, cuttingKnife), 100, 255);
+                addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife), 260, 255);
+                firstWorldSwitch = false;
+            }
+            orderTab.switchedWorld(false);
         }
         
         if(Greenfoot.isKeyDown("h")) {
             plate.removeBeefs();
             removeObject(plate);
             cookTab.addObject(plate, 310, 320);
-            orderTab.SwitchedWorld(true);
+            orderTab.switchedWorld(true);
             Greenfoot.setWorld(cookTab);
+        }
+    }
+    
+    private void grabPumpkin() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null) {
+            if(mouse.getX() > 40 && mouse.getY() > 70 
+            && mouse.getX() < 170 && mouse.getY() < 170 && Greenfoot.mousePressed(null)) {
+                if(!pumpkinSpawned) {
+                    pumpkinSpawned = true;
+                    System.out.println("Object Spawned!");
+                    addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife), 100, 120);
+                }
+            } else {
+                pumpkinSpawned = false;
+            }
+        }
+    }
+    private void grabWatermelon() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null) {
+            if(mouse.getX() > 200 && mouse.getY() > 70 
+            && mouse.getX() < 320 && mouse.getY() < 170 && Greenfoot.mousePressed(null)) {
+                if(!watermelonSpawned) {
+                    watermelonSpawned = true;
+                    System.out.println("Object Spawned!");
+                    addObject(new Watermelon(plate, cuttingBoard, cuttingKnife), 260, 120);
+                }
+            } else {
+                watermelonSpawned = false;
+            }
+        }
+    }
+    
+    private void grabEggShell() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null) {
+            if(mouse.getX() > 40 && mouse.getY() > 200 
+            && mouse.getX() < 170 && mouse.getY() < 300 && Greenfoot.mousePressed(null)) {
+                if(!eggShellSpawned) {
+                    eggShellSpawned = true;
+                    System.out.println("Object Spawned!");
+                    addObject(new EggShell(plate, cuttingBoard, cuttingKnife), 100, 255);
+                }
+            } else {
+                eggShellSpawned = false;
+            }
+        }
+    }
+    
+    private void grabPeanutButter() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null) {
+            if(mouse.getX() > 200 && mouse.getY() > 200 
+            && mouse.getX() < 320 && mouse.getY() < 300 && Greenfoot.mousePressed(null)) {
+                if(!peanutButterSpawned) {
+                    peanutButterSpawned = true;
+                    System.out.println("Object Spawned!");
+                    addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife), 260, 255);
+                }
+            } else {
+                peanutButterSpawned = false;
+            }
         }
     }
     

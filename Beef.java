@@ -10,14 +10,15 @@ public class Beef extends Actor
 {
     private GreenfootImage image = getImage();
     GreenfootSound sizzleSFX = new GreenfootSound("sizzle0.wav");
+    private CookingWorld cookTab;
     private String[] rarityArray = {"raw", "rare", "medium", "well", "ash"};
     private String rarity = rarityArray[0];
     private int rarityCounter = 0;
     private int cookingTime = 0; //in seconds
     private int timeToCook = 3;
     private int cookingFramesElapsed = 0;
-    private int resizedImageWidth = image.getWidth();
-    private int resizedImageHeight = image.getHeight();
+    private int resizedImageWidth = image.getWidth()*11/10;
+    private int resizedImageHeight = image.getHeight()*11/10;
     private int imageScalePercent = 120; //will scale image up 20%
     private boolean isDragging = false;
     private boolean firstDrag = false;
@@ -27,14 +28,14 @@ public class Beef extends Actor
     
     private PlateBack plate;
  
-    public Beef(PlateBack plate) {
+    public Beef(PlateBack plate, CookingWorld cookTab) {
         image.scale(resizedImageWidth,resizedImageHeight);
         this.plate = plate;
     }
     
     public void act()
     {
-        checkLocation();
+        checkIfOnGrill();
         cook();
         checkMouse();
     }
@@ -78,7 +79,7 @@ public class Beef extends Actor
         }
     }
     
-    private void checkLocation() {
+    private void checkIfOnGrill() {
         //checks whether Beef is on the grill
         if(getX() > 360 && getY() > 110 
         && getX() < 510 && getY() < 227 && !isDragging) {
@@ -109,5 +110,6 @@ public class Beef extends Actor
                 image.scale(resizedImageWidth,resizedImageHeight);
             }
         }
-    }    
+    }
+    
 }

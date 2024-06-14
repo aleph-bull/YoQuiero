@@ -38,11 +38,11 @@ public class PlateBack extends Actor
                 getWorld().addObject(beefImage, pos[0] + displacementX, 
                                                 pos[1] + displacementY);
                 beefImage.setImage("beef" + beefArray.get(i) + ".png");
-                orderTab.SwitchedWorldActor(false);
+                orderTab.switchedWorldActor(false);
                 
             }
         }
-        orderTab.SwitchedWorldActor(false);
+        orderTab.switchedWorldActor(false);
     }
     
     public void storeBeef(int rarity, int xCoord, int yCoord){

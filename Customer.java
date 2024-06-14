@@ -23,10 +23,10 @@ public class Customer extends Actor
     private String[][][] beefDialog = 
     {
         {//beef
-            {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge", "res cruda"},         //raw
-            {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef" , "carne rara"},        //rare
-            {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well", "carne cocida"},        //medium
-            {"well done beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all", "carne recocida"},     //well
+            {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge", "some raw carne asada"},         //raw
+            {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef" , "some rare carne asada"},        //rare
+            {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well", "medium carne asada"},        //medium
+            {"well done beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all", "well done carne asada"},     //well
             {"ashy beef", "non-vegan coal", "animal carbon", "cancer causing beef", "combustible beef rock", "carbón de res"}   //ash
         },
         { //veggie

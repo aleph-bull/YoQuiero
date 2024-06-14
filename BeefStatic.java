@@ -8,10 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BeefStatic extends Actor
 {
-    /**
-     * Act - do whatever the BeefStatic wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage image = getImage();
+    
+    private int resizedImageWidth = image.getWidth()*11/10;
+    private int resizedImageHeight = image.getHeight()*11/10;
+    
+    public BeefStatic() {
+        image.scale(resizedImageWidth,resizedImageHeight);
+    }
+    
     public void act()
     {
         // Add your action code here.

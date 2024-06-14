@@ -14,10 +14,6 @@ public class CookingWorld extends World
     private boolean kWasDown = false;
     private boolean hWasDown = false;
     private boolean firstWorldSwitch = true;
-    /**
-     * Constructor for objects of class CookingWorld.
-     * 
-     */
     private boolean beefSpawned = false; 
     public CookingWorld(OrderingWorld orderTab)
     {     
@@ -29,7 +25,6 @@ public class CookingWorld extends World
         
         this.orderTab = orderTab;
         buildTab = new BuildingWorld(this, orderTab, plate);
-        
     }
     
     public void act() {
@@ -38,23 +33,23 @@ public class CookingWorld extends World
         if(orderTab.didWorldSwitch()){
             plate = orderTab.getPlate();
             if(firstWorldSwitch) {
-                addObject(new Beef(plate), 125, 120);
+                addObject(new Beef(plate, this), 125, 120);
                 firstWorldSwitch = false;
             }
             kWasDown = true;
             hWasDown = true;
-            orderTab.SwitchedWorld(false);
+            orderTab.switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("h") && !kWasDown && !hWasDown) {
+        if(Greenfoot.isKeyDown("h") && !hWasDown) {
             removeObject(plate);
-            orderTab.SwitchedWorld(true);
+            orderTab.switchedWorld(true);
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
-        } else if (Greenfoot.isKeyDown("k") && !kWasDown && !hWasDown) {
+        } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
             removeObject(plate);
-            orderTab.SwitchedWorld(true);
+            orderTab.switchedWorld(true);
             buildTab.addObject(plate, 310 + buildTab.getPlateDisplacement(true), 
                                       320 + buildTab.getPlateDisplacement(false));
 
@@ -74,7 +69,7 @@ public class CookingWorld extends World
                 if(!beefSpawned) {
                     beefSpawned = true;
                     System.out.println("Object Spawned!");
-                    addObject(new Beef(plate), 125, 123);
+                    addObject(new Beef(plate, this), 125, 123);
                 }
             } else {
                 beefSpawned = false;
@@ -88,5 +83,13 @@ public class CookingWorld extends World
     
     public BuildingWorld getBuildTab(){
         return buildTab;
+    }
+    
+    public boolean getHWasDown() {
+        return hWasDown;
+    }
+    
+    public boolean getKWasDown() {
+        return kWasDown;
     }
 }
