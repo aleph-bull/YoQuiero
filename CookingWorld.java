@@ -19,7 +19,7 @@ public class CookingWorld extends World
     {     
         super(600, 400, 1);
         plate = orderTab.getPlate();
-        setPaintOrder(Beef.class, PlateFront.class, BeefStatic.class);
+        setPaintOrder(Beef.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
         
         addObject(new PlateFront(), 310, 320);
         
@@ -42,17 +42,18 @@ public class CookingWorld extends World
         }
         
         if(Greenfoot.isKeyDown("h") && !hWasDown) {
+            plate.removeIngredients();
             removeObject(plate);
             orderTab.switchedWorld(true);
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
         } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
+            plate.removeIngredients();
             removeObject(plate);
             orderTab.switchedWorld(true);
             buildTab.addObject(plate, 310 + buildTab.getPlateDisplacement(true), 
                                       320 + buildTab.getPlateDisplacement(false));
-
             Greenfoot.setWorld(buildTab);
         }
         

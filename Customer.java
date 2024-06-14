@@ -35,11 +35,11 @@ public class Customer extends Actor
     };
     private String [][] ingredientDialog =
     {
-        {//watermelon
-            "watermelon", "green outside fruit", "red inside fruit", "that thing that is mostly water", "sweet summer fruit"
-        },
         {//pumpkin
             "pumpkin", "orange outside fruit", "orange inside fruit", "orange squash", "autumn fruit", "halloween decor"
+        },
+        {//watermelon
+            "watermelon", "green outside fruit", "red inside fruit", "that thing that is mostly water", "sweet summer fruit"
         },
         {//egg shells
             "egg shell", "white crunchy stuff", "dairy product", "calcium carbonate", "chicken birth pod", "breakfast garbage"

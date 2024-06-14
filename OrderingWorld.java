@@ -28,7 +28,7 @@ public class OrderingWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         plate = new PlateBack(this);
-        setPaintOrder(PlateFront.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
+        setPaintOrder(PlateFront.class, IngredientStatic.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
         
         addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
@@ -43,6 +43,7 @@ public class OrderingWorld extends World
         
         if(Greenfoot.isKeyDown("k")){
             plate.removeBeefs();
+            plate.removeIngredients();
             removeObject(plate);
             cookTab.addObject(plate, 310, 320);
             switchedWorld(true);
@@ -59,7 +60,6 @@ public class OrderingWorld extends World
             customerTypeName = customers[customerTypeNumber];
             
             addObject(new Customer(customerTypeNumber, customerTypeName), 200, 500);
-            
         }
     }
     

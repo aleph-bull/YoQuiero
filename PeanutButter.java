@@ -69,7 +69,7 @@ public class PeanutButter extends Actor
                 firstDrag = false;
                 
                 if (getWorld().getObjectsAt(getX(), getY(), PlateBack.class).contains(plate)) {
-                    //plate.storeBeef(rarityCounter, getX(), getY());
+                    plate.storeIngredient(3, isChopped, getX(), getY());
                     getWorld().removeObject(this);
                 }
                 

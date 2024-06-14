@@ -30,7 +30,7 @@ public class BuildingWorld extends World
         this.orderTab = orderTab;
         this.plate = plate;
         
-        setPaintOrder(CuttingKnife.class, Pumpkin.class, Watermelon.class, PlateFront.class);
+        setPaintOrder(CuttingKnife.class, Pumpkin.class, Watermelon.class, PeanutButter.class, EggShell.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
         
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
         
@@ -59,6 +59,7 @@ public class BuildingWorld extends World
         
         if(Greenfoot.isKeyDown("h")) {
             plate.removeBeefs();
+            plate.removeIngredients();
             removeObject(plate);
             cookTab.addObject(plate, 310, 320);
             orderTab.switchedWorld(true);
