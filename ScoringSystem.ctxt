@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ScoringSystem
+comment1.params=beefRarity\ ingredientType\ ingredientIsChopped\ desiredMeat\ desiredRarity\ desiredBeefAmnt\ desiredIngredient\ desiredIngredientAmnt
+comment1.target=ScoringSystem(java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ int,\ int,\ int,\ int,\ int)
+comment2.params=
+comment2.target=int\ calculateScore()
+numComments=3

@@ -136,4 +136,8 @@ public class BuildingWorld extends World
         }
         return plateDisplacementY;
     }
+    
+    public void resetPlate() {
+        plate = orderTab.getPlate();
+    }
 }

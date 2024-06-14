@@ -1,6 +1,14 @@
 #BlueJ class context
 comment0.target=GiveButton
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ GiveButton\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=void\ act()
-numComments=2
+comment1.params=customer\ orderTab\ plate
+comment1.target=GiveButton(Customer,\ OrderingWorld,\ PlateBack)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ gradeFood()
+comment4.params=
+comment4.target=void\ checkClicked()
+comment5.params=
+comment5.target=void\ playEatingAnimation()
+numComments=6

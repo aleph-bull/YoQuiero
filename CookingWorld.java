@@ -43,6 +43,7 @@ public class CookingWorld extends World
         
         if(Greenfoot.isKeyDown("h") && !hWasDown) {
             plate.removeIngredients();
+            plate.removeBeefs();
             removeObject(plate);
             orderTab.switchedWorld(true);
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
@@ -50,6 +51,7 @@ public class CookingWorld extends World
             Greenfoot.setWorld(orderTab);
         } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
             plate.removeIngredients();
+            plate.removeBeefs();
             removeObject(plate);
             orderTab.switchedWorld(true);
             buildTab.addObject(plate, 310 + buildTab.getPlateDisplacement(true), 
@@ -92,5 +94,9 @@ public class CookingWorld extends World
     
     public boolean getKWasDown() {
         return kWasDown;
+    }
+    
+    public void resetPlate() {
+        plate = orderTab.getPlate();
     }
 }

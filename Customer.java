@@ -11,6 +11,9 @@ public class Customer extends Actor
 {
     private static Random rand = new Random();
     
+    private OrderingWorld orderTab;
+    private PlateBack plate;
+    
     private String[] rarityArray = {"raw", "rare", "medium", "well", "ash"};
         
     //dialog
@@ -51,25 +54,37 @@ public class Customer extends Actor
     
     private int desiredMeat = 0;
     private int desiredRarity = rand.nextInt(0, 5);
-    private int desiredBeefAmnt = rand.nextInt(1, 4);
+    private int desiredBeefAmnt = rand.nextInt(1, 6);
     private int desiredIngredient = rand.nextInt(0, 4);
     private int desiredIngredientAmnt = rand.nextInt(1, 6);
+    
+    private int score;
                                     
     private GreenfootImage image = getImage();
     private String name;
     private String completeDialog = introDialog[rand.nextInt(0, introDialog.length)] + 
                                     beefDialog[desiredMeat][desiredRarity][rand.nextInt(0, beefDialog[desiredMeat][desiredRarity].length)] +
-                                    ". " + desiredBeefAmnt + " piece" + (desiredBeefAmnt == 1 ?"": "s") + " of that, and give me " + 
-                                    desiredIngredientAmnt + " piece" + (desiredIngredientAmnt == 1 ?"": "s") +" of " +
+                                    ". " + desiredBeefAmnt + " serving" + (desiredBeefAmnt == 1 ?"": "s") + " of that, and give me " + 
+                                    desiredIngredientAmnt + " serving" + (desiredIngredientAmnt == 1 ?"": "s") +" of " +
                                     ingredientDialog[desiredIngredient][rand.nextInt(0, ingredientDialog[desiredIngredient].length)] + ".";
+    
+    private GiveButton giveButton;
+    private Textbox textbox;
+    
     private boolean movingUp = true;
     private boolean isSpeaking = false;
+    private boolean finishedSpeaking = false;
     private boolean textSpawned = false;
+    private boolean atInitPosition = false;
+    private boolean customerAteFood = false;
     private int resizedImageWidth = image.getWidth()/2;
     private int resizedImageHeight = image.getHeight()/2;
     
-    public Customer(int customerTypeNumber, String name) {
+    public Customer(int customerTypeNumber, String name, OrderingWorld orderTab, PlateBack plate) {
+        this.orderTab = orderTab;
+        this.plate = plate;
         this.name = name;
+        giveButton = new GiveButton(this, orderTab, plate);
         setImage("customer" + customerTypeNumber + ".png");
         image = getImage();
         System.out.println("customerSpawned");
@@ -80,34 +95,91 @@ public class Customer extends Actor
     {
         moveToInitPosition();
         sayOrder();
+        sayOpinion();
     }
     
     //moves the customer to y 170 when the customer spawns 
     private void moveToInitPosition() {
-        if(movingUp && getY() >= 170) {
-            setLocation(getX(), getY() - 3);
-        } else {
-            movingUp = false;
-            isSpeaking = true;
+        if(!atInitPosition){
+            if(movingUp && getY() >= 170) {
+                setLocation(getX(), getY() - 3);
+            } else {
+                movingUp = false;
+                isSpeaking = true;
+                atInitPosition = true;
+            }
         }
     }
     
     private void sayOrder() {
         if(isSpeaking) {
             if(!textSpawned) {
-                getWorld().addObject(new Textbox(completeDialog, this), 440, 120);
+                textbox = new Textbox(completeDialog, this);
+                getWorld().addObject(textbox, 440, 120);
                 getWorld().addObject(new Nametag(name), 365, 54);
                 
                 textSpawned = true;
             }
         }
+        if(finishedSpeaking && !isSpeaking){
+            getWorld().addObject(giveButton, 333, 187);
+            isSpeaking = true;
+        }
+    }
+    
+    private void gradeFood() {
+        System.out.println(score);
+    }
+    
+    private void sayOpinion() {
+        if(customerAteFood) {
+            gradeFood();
+            customerAteFood = false;
+        }
+    }
+    
+    public void removeTexts () {
+        getWorld().removeObject(textbox);
+        getWorld().removeObject(giveButton);
+    }
+    
+    public void hideTexts () {
+        textbox.getImage().setTransparency(0);
+        giveButton.getImage().setTransparency(0);
     }
     
     public void changeIsSpeaking(boolean isSpeaking) {
          this.isSpeaking = isSpeaking;
+         if(!isSpeaking){
+             finishedSpeaking = true;
+         }
     }
     
     public int getDesiredMeat(){
         return desiredMeat;
+    }
+    
+    public int getDesiredRarity() {
+        return desiredRarity;
+    }
+    
+    public int getDesiredBeefAmnt(){
+        return desiredBeefAmnt;
+    }
+    
+    public int getDesiredIngredient() {
+        return desiredIngredient;
+    }
+    
+    public int getDesiredIngredientAmnt() {
+        return desiredIngredientAmnt;
+    }
+    
+    public void setScore(int Score) {
+        this.score = score;
+    }
+    
+    public void customerDidEatFood(){
+        customerAteFood = true;
     }
 }

@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=void\ grabPeanutButter()
 comment7.params=getX
 comment7.target=int\ getPlateDisplacement(boolean)
-numComments=8
+comment8.params=
+comment8.target=void\ resetPlate()
+numComments=9
