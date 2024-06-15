@@ -6,7 +6,7 @@ public class LosingScreen extends World
     public LosingScreen()
     {    
         super(600, 400, 1); 
-        Greenfoot.playSound("win.mp3");
+        Greenfoot.playSound("lose.mp3");
     }
     public void act() {
         MouseInfo mouse = Greenfoot.getMouseInfo();

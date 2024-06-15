@@ -32,6 +32,7 @@ public class MusicPlayer {
             return;
         }
         currentSong = playlist.get(currentSongIndex);
+        currentSong.setVolume(40);
         currentSong.play();
     }
     
