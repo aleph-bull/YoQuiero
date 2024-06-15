@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Textbox
-comment1.params=dialog\ customer
-comment1.target=Textbox(java.lang.String,\ Customer)
+comment1.params=dialog\ customer\ speakingOpinio
+comment1.target=Textbox(java.lang.String,\ Customer,\ boolean)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=letter

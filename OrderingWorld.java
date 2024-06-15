@@ -95,6 +95,10 @@ public class OrderingWorld extends World
         return plateDisplacementY;
     }
     
+    public void makeCustomerOrderingFalse() {
+        customerOrdering = false;
+    }
+    
     public PlateBack getPlate(){
         return plate;
     }

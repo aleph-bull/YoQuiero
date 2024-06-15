@@ -7,7 +7,6 @@ public class ScoringSystem
     private ArrayList <Integer> ingredientType = new ArrayList <>();
     int ingredientAmnt;
     private ArrayList <Boolean> ingredientIsChopped = new ArrayList <>();
-    int numIngredientsChopped = 0;
     
     private int desiredMeat;
     private int desiredRarity;
@@ -27,11 +26,6 @@ public class ScoringSystem
         this.ingredientType = ingredientType;
         ingredientAmnt = ingredientType.size();
         this.ingredientIsChopped = ingredientIsChopped;
-        for(int i = 0; i < ingredientAmnt; i++) {
-            if(ingredientIsChopped.get(i)) {
-                numIngredientsChopped++;
-            }
-        }
         
         this.desiredMeat = desiredMeat;
         this.desiredRarity = desiredRarity;
@@ -78,7 +72,6 @@ public class ScoringSystem
             }
             score += scoreGains[ingredientAmntDifference];
         }
-        System.out.println("score:" + score);
         return score;
     }
 

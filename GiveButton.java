@@ -40,12 +40,13 @@ public class GiveButton extends Actor
     public void act()
     {
         checkClicked();
-        playEatingAnimation();
         if(finishedEating){
             gradeFood();
+            customer.setOpinionStatement();
             plate.resetValues();
             finishedEating = false;
         }
+        playEatingAnimation();
     }
     
     private void gradeFood() {
@@ -53,7 +54,6 @@ public class GiveButton extends Actor
         customer.getDesiredMeat(), customer.getDesiredRarity(), customer.getDesiredBeefAmnt(), customer.getDesiredIngredient(), customer.getDesiredIngredientAmnt());
         
         score = scoringSystem.calculateScore();
-        System.out.println("score3: " + score);
         customer.setScore(score);
     }
     
