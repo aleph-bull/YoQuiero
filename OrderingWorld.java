@@ -38,11 +38,6 @@ public class OrderingWorld extends World
     }
     
     public void act(){
-        // if(plate == null) {
-            // System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-            // plate = new PlateBack(this);
-            // addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
-        // }
         musicPlayer.checkAndPlayNext();
         if(didWorldSwitch()){
             plate = getPlate();

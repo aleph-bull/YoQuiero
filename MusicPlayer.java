@@ -32,7 +32,6 @@ public class MusicPlayer {
             return;
         }
         currentSong = playlist.get(currentSongIndex);
-        currentSong.setVolume(40);
         currentSong.play();
     }
     
@@ -42,7 +41,7 @@ public class MusicPlayer {
     }
     
     public void checkAndPlayNext() {
-        if (currentSong != null && !currentSong.isPlaying() && !isPaused) {
+        if (!currentSong.isPlaying() && !isPaused) {
             if (currentSong != null) {
                 currentSong.stop();
             }
