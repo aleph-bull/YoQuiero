@@ -29,5 +29,11 @@ public class WalletText extends Actor
         setImage(image);
         String money = Integer.toString(orderTab.getWallet());
         image.drawString("$" + money, 10, 20);
+        if(orderTab.getWallet() >= 500) {
+            Greenfoot.setWorld(new MainMenu());
+        }
+        if(orderTab.getWallet() < 0) {
+            Greenfoot.setWorld(new MainMenu());
+        }
     }
 }

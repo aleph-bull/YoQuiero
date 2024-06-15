@@ -10,6 +10,6 @@ public class MainMenu extends World
     {    
         super(600, 400, 1); 
         addObject(playButton, 110, 190);
-        addObject(instructionsButton, 190, 270);
+        addObject(instructionsButton, 190, 280);
     }
 }

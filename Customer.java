@@ -226,7 +226,7 @@ public class Customer extends Actor
             }
             
             if(plate.getIngredientType().size() > 0) {
-                if(choppedIngredientAmnt < 1){
+                if(100*choppedIngredientAmnt/desiredIngredientAmnt < 50){
                     int randomIndex = rand.nextInt(0, choppingOpinionDialog.length);
                     completeOpinionDialog = completeOpinionDialog + choppingOpinionDialog[randomIndex];
                     hasCritque = true;

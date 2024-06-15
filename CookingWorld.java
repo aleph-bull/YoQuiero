@@ -40,7 +40,7 @@ public class CookingWorld extends World
             orderTab.switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("h") && !hWasDown) {
+        if(Greenfoot.isKeyDown("j") && !hWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
@@ -49,7 +49,7 @@ public class CookingWorld extends World
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
-        } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
+        } else if (Greenfoot.isKeyDown("l") && !kWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
