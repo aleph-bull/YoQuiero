@@ -121,7 +121,6 @@ public class Customer extends Actor
         giveButton = new GiveButton(this, orderTab, plate);
         setImage("customer" + customerTypeNumber + ".png");
         image = getImage();
-        System.out.println("customerSpawned");
         image.scale(resizedImageWidth,resizedImageHeight);
     }
     
@@ -268,12 +267,14 @@ public class Customer extends Actor
                 }
                 int randomIndex = rand.nextInt(0, goodOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + goodOpinionDialog[randomIndex];
+                score += 5;
             } else if (score >= 15) {
                 int randomIndex = rand.nextInt(0, mediumOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + mediumOpinionDialog[randomIndex];
             } else if (score >= 8){
                 int randomIndex = rand.nextInt(0, badOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + badOpinionDialog[randomIndex];
+                score -= 5;
             } else {
                 int randomIndex = rand.nextInt(0, horribleOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + horribleOpinionDialog[randomIndex];

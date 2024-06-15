@@ -39,7 +39,6 @@ public class Beef extends Actor
         if (mouse != null) {
             if (Greenfoot.mousePressed(this)) {
                 isDragging = true;
-                System.out.println(mouse.getX() + ", " + mouse.getY());
             }
 
             if (Greenfoot.mouseDragged(this) && isDragging) {

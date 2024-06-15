@@ -30,7 +30,7 @@ public class OrderingWorld extends World
         plate = new PlateBack(this);
         walletText = new WalletText(this);
         setPaintOrder(WalletText.class, GiveButton.class, PlateFront.class, IngredientStatic.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
-        
+        musicPlayer.play();
         addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
         addObject(walletText, 35, 385);
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);

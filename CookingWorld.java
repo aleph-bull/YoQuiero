@@ -20,7 +20,7 @@ public class CookingWorld extends World
         plate = orderTab.getPlate();
         walletText = new WalletText(orderTab);
         setPaintOrder(WalletText.class, Beef.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
-        
+        musicPlayer.play();
         addObject(new PlateFront(), 310, 320);
         addObject(walletText, 35, 385);
         

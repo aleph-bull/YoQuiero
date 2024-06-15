@@ -42,14 +42,13 @@ public class PeanutButter extends Actor
     
     private void checkMouse(){
         MouseInfo mouse = Greenfoot.getMouseInfo();
+        boolean knifeAtObject = getWorld().getObjectsAt(getX(), getY(), CuttingKnife.class).contains(cuttingKnife);
         if (mouse != null) {
-            if (Greenfoot.mousePressed(this)) {
+            if (Greenfoot.mousePressed(this) || (knifeAtObject && Greenfoot.mousePressed(cuttingKnife))) {
                 isDragging = true;
-                System.out.println(mouse.getX() + ", " + mouse.getY());
-                
             }
             
-            if (Greenfoot.mouseDragged(this) && isDragging) {
+            if ((Greenfoot.mouseDragged(this) || (Greenfoot.mouseDragged(cuttingKnife))) && isDragging) {
                 setLocation(mouse.getX(), mouse.getY());
                 
                 if(!firstDrag) {
@@ -64,7 +63,7 @@ public class PeanutButter extends Actor
                 } 
             }
             
-            if (Greenfoot.mouseDragEnded(this)) {
+            if (Greenfoot.mouseDragEnded(this) || (knifeAtObject && Greenfoot.mouseDragEnded(cuttingKnife))) {
                 isDragging = false;
                 firstDrag = false;
                 

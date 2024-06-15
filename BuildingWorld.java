@@ -21,15 +21,15 @@ public class BuildingWorld extends World
     private boolean watermelonSpawned = false; 
     private boolean eggShellSpawned = false; 
     private boolean peanutButterSpawned = false; 
-    private int plateDisplacementX = 150;
-    private int plateDisplacementY = -55;
+    private int plateDisplacementX = 165;
+    private int plateDisplacementY = -10;
     
     public BuildingWorld(CookingWorld cookTab, OrderingWorld orderTab, PlateBack plate) {
         super(600, 400, 1);
         this.cookTab = cookTab;
         this.orderTab = orderTab;
         this.plate = plate;
-        
+        musicPlayer.play();
         walletText = new WalletText(orderTab);
         
         setPaintOrder(WalletText.class, CuttingKnife.class, Pumpkin.class, Watermelon.class, PeanutButter.class, EggShell.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
