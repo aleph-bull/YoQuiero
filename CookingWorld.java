@@ -7,6 +7,7 @@ public class CookingWorld extends World
     private BuildingWorld buildTab;
     private WalletText walletText;
     private PlateBack plate;
+    private MusicPlayer musicPlayer = MusicPlayer.getInstance();
     //flags to prevent instant skipping
     private boolean kWasDown = false;
     private boolean hWasDown = false;
@@ -28,7 +29,7 @@ public class CookingWorld extends World
     
     public void act() {
         grabBeef();
-        
+        musicPlayer.checkAndPlayNext();
         if(orderTab.didWorldSwitch()){
             plate = orderTab.getPlate();
             if(firstWorldSwitch) {
@@ -40,7 +41,7 @@ public class CookingWorld extends World
             orderTab.switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("j") && !hWasDown) {
+        if(Greenfoot.isKeyDown("h") && !hWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
@@ -49,7 +50,7 @@ public class CookingWorld extends World
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
-        } else if (Greenfoot.isKeyDown("l") && !kWasDown) {
+        } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
@@ -62,6 +63,14 @@ public class CookingWorld extends World
         
         kWasDown = Greenfoot.isKeyDown("k");
         hWasDown = Greenfoot.isKeyDown("h");
+    }
+    
+    public void started() {
+        musicPlayer.play();
+    }
+    
+    public void stopped() {
+        musicPlayer.pause();
     }
     
     //spawns beef when container is pressed

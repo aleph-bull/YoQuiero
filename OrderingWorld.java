@@ -4,6 +4,7 @@ import java.util.Random;
 public class OrderingWorld extends World
 {
     private static Random rand = new Random();
+    private MusicPlayer musicPlayer = MusicPlayer.getInstance();
     private WalletText walletText;
     private CookingWorld cookTab = new CookingWorld(this);
     private PlateBack plate;
@@ -42,7 +43,7 @@ public class OrderingWorld extends World
             // plate = new PlateBack(this);
             // addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
         // }
-        
+        musicPlayer.checkAndPlayNext();
         if(didWorldSwitch()){
             plate = getPlate();
             switchedWorld(false);
@@ -58,6 +59,14 @@ public class OrderingWorld extends World
         }
         
         newCustomer();
+    }
+    
+    public void started() {
+        musicPlayer.play();
+    }
+    
+    public void stopped() {
+        musicPlayer.pause();
     }
     
     private void newCustomer(){

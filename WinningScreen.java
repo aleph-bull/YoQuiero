@@ -1,28 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class MainMenu extends World
+public class WinningScreen extends World
 {
-    OrderingWorld orderTab = new OrderingWorld();
-    PlayButton playButton = new PlayButton(orderTab);
-    InstructionsButton instructionsButton = new InstructionsButton();
     private MusicPlayer musicPlayer = MusicPlayer.getInstance();
-    
-    public MainMenu()
+    public WinningScreen()
     {    
         super(600, 400, 1); 
-
-        addObject(playButton, 110, 190);
-        addObject(instructionsButton, 190, 280);
+        Greenfoot.playSound("win.mp3");
     }
-    
     public void act() {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
         musicPlayer.checkAndPlayNext();
-    }
-
+        if (Greenfoot.mousePressed(this)) {
+            Greenfoot.setWorld(new MainMenu());
+        }
+    }  
+    
     public void started() {
         musicPlayer.play();
     }
-
+    
     public void stopped() {
         musicPlayer.pause();
     }

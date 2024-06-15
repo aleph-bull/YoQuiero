@@ -11,6 +11,7 @@ public class BuildingWorld extends World
     private CookingWorld cookTab;
     private OrderingWorld orderTab;
     private WalletText walletText;
+    private MusicPlayer musicPlayer = MusicPlayer.getInstance();
     private CuttingBoard cuttingBoard = new CuttingBoard();
     private CuttingKnife cuttingKnife = new CuttingKnife();
     private PlateBack plate;
@@ -40,7 +41,16 @@ public class BuildingWorld extends World
         addObject(cuttingKnife, 550, 160);
     }
     
+    public void started() {
+        musicPlayer.play();
+    }
+    
+    public void stopped() {
+        musicPlayer.pause();
+    }
+    
     public void act() {
+        musicPlayer.checkAndPlayNext();
         grabPumpkin();
         grabWatermelon();
         grabEggShell();

@@ -52,26 +52,33 @@ public class Customer extends Actor
         }
     };
     
-    private String[] choppingOpinionDialog = {"Could use some chopping... ", "Use a cutting board for once! ", 
+    private String[] choppingOpinionDialog = {"Could use some chopping... ", "Use a cutting board for once! ", "These toppings hurt to eat, chop it up!",
                                     "It barely fit into my mouth! ", "I think I dislocated my jaw! I may sue! "};
                                     
     private String[] ingredientOpinionDialog = {"I did not ask for these toppings! ", "Taco Bell would've done my toppings better... ", "Did you mess up my toppings? ",
-                                    "Wrong topping my friend. "};
+                                    "Wrong topping my friend. ", "I don't think I asked for these toppings ", "I do not like how these toppings taste. "};
     
-    private String[] noIngredientDialog = {"No toppings? ", "Give me my toppings! ", "I guess you don't like me enough to give me toppings. ", "This is so sad, where are my toppings. "};
+    private String[] noIngredientDialog = {"No toppings? ", "Give me my toppings! ", "I guess you don't like me enough to give me toppings. ", "This is so sad, where are my toppings. ",
+                                    "Are these toppings invisible? ", "Do I have to protest for toppings? ", "I think you forgot something. "};
     
-    private String[] noBeefDialog = {"No beef? What is even the point. ", "Did I just eat nothing? ", "Where is my beef! I will riot! ", "If it were up to me I would use you for beef... "};
+    private String[] noBeefDialog = {"No beef? What is even the point. ", "Did I just eat nothing? ", "Where is my beef! I will riot! ", "If it were up to me I would use you for beef... ",
+                                    "It's not a full meal without meat! ", "Dogs like meat! Where is my meat! "};
                                     
-    private String[] rarityOpinionDialog = {"Mmmm, wrong rarity... ", "This is not the perfect sear. ", "Why does this meat taste funny? ", "I don't like how my meat is cooked. "};
+    private String[] rarityOpinionDialog = {"Mmmm, wrong rarity... ", "This is not the perfect sear. ", "Why does this meat taste funny? ", "I don't like how my meat is cooked. ",
+                                    "I didn't ask for this rarity. ", "WRONG! Wrong rarity! "};
     
-    private String[] goodOpinionDialog = {"You did great! This tasted amazing", "Perfect! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
-                                    "Superb! Ultra tasty! I'll come again!", "Gracias! Muy bien!", "Wow this tastes like Taco Bell! Amazing! I don't quiero Taco Bell anymore."};
+    private String[] goodOpinionDialog = {"You did great! This tasted amazing", "This is perfect! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
+                                    "Superb! Ultra tasty! I'll come again!", "Gracias! Muy bien!", "Wow this tastes like Taco Bell! Amazing! I don't quiero Taco Bell anymore.",
+                                    "I love this meal!", "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!"};
     
     private String[] mediumOpinionDialog = {"This was alright I guess...", "You did just OK. ", "Wow this tastes mid...", "I almost like it... not really.", "Jeez... it's really mediocre",
                                     "Not terrible, but no compliments to the chef.", "It was okay... I still quiero Taco Bell."};
                                     
     private String[] badOpinionDialog = {"Horrible!", "You did NOT do good in the SLIGHTEST!", "I wish I went to Taco Bell...", "Is this even safe to consume?", "I HATED eating this!",
-                                    "Fire the chef! Please!", "Not good at all.", "What is wrong with you?", "I don't like you."};
+                                    "Fire the chef! Please!", "Not good at all.", "What is wrong with you?", "I don't like you.", "My taste buds suffer..."};
+                                    
+    private String[] horribleOpinionDialog = {"This is a travesty.", "You may have just ruined my life.", "I'm stealing your money.", "You robbed my happiness.", "I'm grabbing the tip jar.",
+                                    "I'm stealing 5 bucks, hope it was worth it."};
     
     private int desiredMeat = 0;
     private int desiredRarity = rand.nextInt(0, 5);
@@ -264,9 +271,13 @@ public class Customer extends Actor
             } else if (score >= 15) {
                 int randomIndex = rand.nextInt(0, mediumOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + mediumOpinionDialog[randomIndex];
-            } else {
+            } else if (score >= 8){
                 int randomIndex = rand.nextInt(0, badOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + badOpinionDialog[randomIndex];
+            } else {
+                int randomIndex = rand.nextInt(0, horribleOpinionDialog.length);
+                completeOpinionDialog = completeOpinionDialog + horribleOpinionDialog[randomIndex];
+                score = -5; //makes it so you lose money
             }
         }
     }
