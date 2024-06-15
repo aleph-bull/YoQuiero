@@ -10,6 +10,7 @@ public class BuildingWorld extends World
 {
     private CookingWorld cookTab;
     private OrderingWorld orderTab;
+    private WalletText walletText;
     private CuttingBoard cuttingBoard = new CuttingBoard();
     private CuttingKnife cuttingKnife = new CuttingKnife();
     private PlateBack plate;
@@ -22,17 +23,18 @@ public class BuildingWorld extends World
     private int plateDisplacementX = 150;
     private int plateDisplacementY = -55;
     
-    public BuildingWorld(CookingWorld cookTab, OrderingWorld orderTab, PlateBack plate)
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+    public BuildingWorld(CookingWorld cookTab, OrderingWorld orderTab, PlateBack plate) {
+        super(600, 400, 1);
         this.cookTab = cookTab;
         this.orderTab = orderTab;
         this.plate = plate;
         
-        setPaintOrder(CuttingKnife.class, Pumpkin.class, Watermelon.class, PeanutButter.class, EggShell.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
+        walletText = new WalletText(orderTab);
+        
+        setPaintOrder(WalletText.class, CuttingKnife.class, Pumpkin.class, Watermelon.class, PeanutButter.class, EggShell.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
         
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
+        addObject(walletText, 35, 385);
         
         addObject(cuttingBoard, 470, 150);
         addObject(cuttingKnife, 550, 160);

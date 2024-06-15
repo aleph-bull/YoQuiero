@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=WalletText
+comment1.params=orderTab
+comment1.target=WalletText(OrderingWorld)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

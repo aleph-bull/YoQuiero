@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=OrderingWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ orderingWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=OrderingWorld()
 comment10.params=
@@ -9,6 +8,10 @@ comment11.params=
 comment11.target=BuildingWorld\ getBuildTab()
 comment12.params=
 comment12.target=CookingWorld\ getCookTab()
+comment13.params=
+comment13.target=int\ getWallet()
+comment14.params=money
+comment14.target=void\ addToWallet(int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
@@ -25,4 +28,4 @@ comment8.params=getX
 comment8.target=int\ getPlateDisplacement(boolean)
 comment9.params=
 comment9.target=void\ makeCustomerOrderingFalse()
-numComments=13
+numComments=15

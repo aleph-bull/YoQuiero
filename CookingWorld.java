@@ -1,14 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
-/**
- * All background images are created by me using images from:
- * 
- */
 public class CookingWorld extends World
 {
     private OrderingWorld orderTab;
     private BuildingWorld buildTab;
-    
+    private WalletText walletText;
     private PlateBack plate;
     //flags to prevent instant skipping
     private boolean kWasDown = false;
@@ -18,12 +15,14 @@ public class CookingWorld extends World
     public CookingWorld(OrderingWorld orderTab)
     {     
         super(600, 400, 1);
+        this.orderTab = orderTab;
         plate = orderTab.getPlate();
-        setPaintOrder(Beef.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
+        walletText = new WalletText(orderTab);
+        setPaintOrder(WalletText.class, Beef.class, PlateFront.class, IngredientStatic.class, BeefStatic.class);
         
         addObject(new PlateFront(), 310, 320);
+        addObject(walletText, 35, 385);
         
-        this.orderTab = orderTab;
         buildTab = new BuildingWorld(this, orderTab, plate);
     }
     
@@ -42,6 +41,7 @@ public class CookingWorld extends World
         }
         
         if(Greenfoot.isKeyDown("h") && !hWasDown) {
+            stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
             removeObject(plate);
@@ -50,6 +50,7 @@ public class CookingWorld extends World
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
         } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
+            stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
             removeObject(plate);
@@ -80,6 +81,13 @@ public class CookingWorld extends World
         }
     }
     
+    private void stopAllSizzleSounds() {
+        List<Beef> beefs = getObjects(Beef.class);
+        for (Beef beef : beefs) {
+            beef.stopSizzle();
+        }
+    }
+        
     public PlateBack getPlate(){
         return plate;
     }

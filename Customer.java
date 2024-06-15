@@ -166,6 +166,7 @@ public class Customer extends Actor
         if(customerAteFood && finishedSpeaking) {
             waitFrames++;
             if(!movingDown && waitFrames >= 20){
+                orderTab.addToWallet(score);
                 getWorld().removeObject(nametag);
                 getWorld().removeObject(textbox);
                 movingDown = true;
@@ -208,6 +209,8 @@ public class Customer extends Actor
             int correctIngredientAmnt = 0;
             int correctRarityAmnt = 0;
             
+            boolean hasCritque = false;
+            
             for(int i = 0; i < plate.getIngredientIsChopped().size(); i++){
                 choppedIngredientAmnt++;
             }
@@ -226,28 +229,36 @@ public class Customer extends Actor
                 if(choppedIngredientAmnt < 1){
                     int randomIndex = rand.nextInt(0, choppingOpinionDialog.length);
                     completeOpinionDialog = completeOpinionDialog + choppingOpinionDialog[randomIndex];
+                    hasCritque = true;
                 }
                 if(100*correctIngredientAmnt/desiredIngredientAmnt < 50){
                     int randomIndex = rand.nextInt(0, ingredientOpinionDialog.length);
                     completeOpinionDialog = completeOpinionDialog + ingredientOpinionDialog[randomIndex];
+                    hasCritque = true;
                 }
             } else {
                 int randomIndex = rand.nextInt(0, noIngredientDialog.length);
                 completeOpinionDialog = completeOpinionDialog + noIngredientDialog[randomIndex];
+                hasCritque = true;
             }
             
             if(plate.getBeefRarity().size() > 0) {
                 if(100*correctRarityAmnt/desiredBeefAmnt < 50){
                     int randomIndex = rand.nextInt(0, rarityOpinionDialog.length);
                     completeOpinionDialog = completeOpinionDialog + rarityOpinionDialog[randomIndex];
+                    hasCritque = true;
                 }
             } else {
                 int randomIndex = rand.nextInt(0, noBeefDialog.length);
                 completeOpinionDialog = completeOpinionDialog + noBeefDialog[randomIndex];
+                hasCritque = true;
             }
             opinionStatementMade = true;
             
-            if(score >= 25) {
+            if(score >= 23) {
+                if(hasCritque){
+                    completeOpinionDialog = completeOpinionDialog + "Yet... ";
+                }
                 int randomIndex = rand.nextInt(0, goodOpinionDialog.length);
                 completeOpinionDialog = completeOpinionDialog + goodOpinionDialog[randomIndex];
             } else if (score >= 15) {

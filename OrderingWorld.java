@@ -1,16 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
-/**
- * Write a description of class orderingWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class OrderingWorld extends World
 {
     private static Random rand = new Random();
+    private WalletText walletText;
     private CookingWorld cookTab = new CookingWorld(this);
     private PlateBack plate;
+    
+    private int playerWallet = 35;
+    
     private int plateDisplacementX = 40;
     private int plateDisplacementY = -35;
     
@@ -28,9 +27,11 @@ public class OrderingWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         plate = new PlateBack(this);
-        setPaintOrder(GiveButton.class, PlateFront.class, IngredientStatic.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
+        walletText = new WalletText(this);
+        setPaintOrder(WalletText.class, GiveButton.class, PlateFront.class, IngredientStatic.class, BeefStatic.class, PlateBack.class, Register.class,Customer.class);
         
         addObject(plate, 310 + plateDisplacementX, 320 + plateDisplacementY);
+        addObject(walletText, 35, 385);
         addObject(new PlateFront(), 310 + plateDisplacementX, 320 + plateDisplacementY);
         addObject(counter, 300, 200);
     }
@@ -111,4 +112,11 @@ public class OrderingWorld extends World
         return cookTab;
     }
     
+    public int getWallet() {
+        return playerWallet;
+    }
+    
+    public void addToWallet(int money) {
+        playerWallet += money;
+    }
 }
