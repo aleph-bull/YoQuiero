@@ -39,6 +39,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
         https://www.buzzfeednews.com/article/eimiyamamitsu/the-dog-likely-to-make-most-number-of-people-in-t
         https://makersplace.com/product/side-eye-dog-1-of-1-487101/
         https://the-wiki-camp.fandom.com/wiki/Walter_(White_Dog)
+        https://www.istockphoto.com/photo/arrow-keys-gm173938180-9718383?searchscope=image%2Cfilm
 
     Sound Credits: 
         https://pixabay.com/sound-effects/sizzling-frying-pan-201293/
