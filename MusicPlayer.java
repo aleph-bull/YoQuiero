@@ -13,10 +13,10 @@ public class MusicPlayer {
 
     private MusicPlayer() {
         playlist = new ArrayList<>();
-        loadSongs();
+        loadSongs(); // initialize playlist with songs
         hasPlayed = new boolean[playlist.size()];
-        resetHasPlayed();
-        randomizeSong();
+        resetHasPlayed(); // mark all songs as not played
+        randomizeSong(); // select the first song randomly
     }
     
     private void loadSongs() {
@@ -24,16 +24,19 @@ public class MusicPlayer {
         playlist.add(new GreenfootSound("song2.mp3"));
         playlist.add(new GreenfootSound("song3.mp3"));
         playlist.add(new GreenfootSound("song4.mp3"));
+        playlist.add(new GreenfootSound("song5.mp3"));
+        playlist.add(new GreenfootSound("song6.mp3"));
+        playlist.add(new GreenfootSound("song7.mp3"));
     }
 
     private void resetHasPlayed() {
         for(int i = 0; i < hasPlayed.length; i++) {
-            hasPlayed[i] = false;
+            hasPlayed[i] = false; // mark each song as not played
         }
     }
     
-    private void randomizeSong(){
-        currentSongIndex = rand.nextInt(0, playlist.size());
+    private void randomizeSong() {
+        currentSongIndex = rand.nextInt(playlist.size()); // pick a random song index
     }
     
     public static MusicPlayer getInstance() {
@@ -43,19 +46,18 @@ public class MusicPlayer {
         return instance;
     }
     
-    public void play(){
+    public void play() {
         if (currentSong != null && currentSong.isPlaying()) {
-            return;
+            return; // if the current song is already playing, do nothing
         }
         currentSong = playlist.get(currentSongIndex);
+        hasPlayed[currentSongIndex] = true; // mark the song as played
         currentSong.play();
-        hasPlayed[currentSongIndex] = true;
-        System.out.println("Now Playing Track " + (currentSongIndex + 1));
     }
     
     public void pause() {
-            currentSong.pause();
-            isPaused = true;
+        currentSong.pause();
+        isPaused = true;
     }
     
     public void checkAndPlayNext() {
@@ -64,6 +66,7 @@ public class MusicPlayer {
                 currentSong.stop();
             }
 
+            // check if all songs have been played
             boolean allSongsPlayed = true;
             for (boolean played : hasPlayed) {
                 if (!played) {
@@ -73,11 +76,11 @@ public class MusicPlayer {
             }
             
             if (allSongsPlayed) {
-                resetHasPlayed();
+                resetHasPlayed(); // reset if all songs have been played
             }
             
             while (hasPlayed[currentSongIndex]) {
-                randomizeSong();
+                randomizeSong(); // pick a new song that hasn't been played
             }
             play();
         }

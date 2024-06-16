@@ -14,8 +14,7 @@ public class PlayButton extends Actor
     private int resizedImageWidth = image.getWidth()*12/10;
     private int resizedImageHeight = image.getHeight()*12/10;
     
-    public PlayButton(OrderingWorld orderTab){
-        this.orderTab = orderTab;
+    public PlayButton(){
         image.scale(resizedImageWidth,resizedImageHeight);
     }
     
@@ -25,6 +24,7 @@ public class PlayButton extends Actor
         
         if (mouse != null) {
             if (Greenfoot.mouseClicked(this)) {
+                OrderingWorld orderTab = new OrderingWorld();
                 Greenfoot.setWorld(orderTab);
             }
         }

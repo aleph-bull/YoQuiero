@@ -1,19 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Beef extends Actor
-{
+public class Beef extends Actor {
     private GreenfootImage image = getImage();
     GreenfootSound sizzleSFX = new GreenfootSound("sizzle0.wav");
     private CookingWorld cookTab;
     private String[] rarityArray = {"raw", "rare", "medium", "well", "ash"};
     private String rarity = rarityArray[0];
     private int rarityCounter = 0;
-    private int cookingTime = 0; //in seconds
+    private int cookingTime = 0; // in seconds
     private int timeToCook = 3;
     private int cookingFramesElapsed = 0;
-    private int resizedImageWidth = image.getWidth()*11/10;
-    private int resizedImageHeight = image.getHeight()*11/10;
-    private int imageScalePercent = 120; //will scale image up 20%
+    private int resizedImageWidth = image.getWidth() * 11 / 10;
+    private int resizedImageHeight = image.getHeight() * 11 / 10;
+    private int imageScalePercent = 120; // will scale image up 20%
     private boolean isDragging = false;
     private boolean firstDrag = false;
     private boolean alreadyCooked = false;
@@ -23,17 +22,17 @@ public class Beef extends Actor
     private PlateBack plate;
  
     public Beef(PlateBack plate, CookingWorld cookTab) {
-        image.scale(resizedImageWidth,resizedImageHeight);
+        image.scale(resizedImageWidth, resizedImageHeight);
         this.plate = plate;
     }
     
-    public void act()
-    {
+    public void act() {
         checkIfOnGrill();
         cook();
         checkMouse();
     }
     
+    // check mouse interaction with Beef
     private void checkMouse() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
@@ -44,14 +43,11 @@ public class Beef extends Actor
             if (Greenfoot.mouseDragged(this) && isDragging) {
                 setLocation(mouse.getX(), mouse.getY());
                 
-                if(!firstDrag) {
-                    image.scale(image.getWidth()*imageScalePercent/100, 
-                                image.getHeight()*imageScalePercent/100);
+                if (!firstDrag) {
+                    image.scale(image.getWidth() * imageScalePercent / 100, 
+                                image.getHeight() * imageScalePercent / 100);
                     setImage(image); 
-                    /* 
-                     * makes image larger once to appear as though
-                     * the player is lifting the object
-                     */
+                    // make image larger once to appear as though the player is lifting the object
                     sizzleSFX.stop();
                     firstDrag = true;
                 } 
@@ -66,46 +62,47 @@ public class Beef extends Actor
                     getWorld().removeObject(this);
                 }
                 
-                image.scale(resizedImageWidth,resizedImageHeight);
+                image.scale(resizedImageWidth, resizedImageHeight);
                 setImage(image);
             }
         }
     }
     
+    // check if Beef is on the grill
     private void checkIfOnGrill() {
-        //checks whether Beef is on the grill
-        if(getX() > 360 && getY() > 110 
-        && getX() < 510 && getY() < 227 && !isDragging) {
+        if (getX() > 360 && getY() > 110 && getX() < 510 && getY() < 227 && !isDragging) {
             onGrill = true; 
         } else {
             onGrill = false;
         }
     }
     
+    // cooks Beef on the grill
     private void cook() {
-        if(onGrill) {
+        if (onGrill) {
             cookingFramesElapsed++;
             sizzleSFX.playLoop();
             if (cookingFramesElapsed >= FPS) {
-            cookingTime++;
-            cookingFramesElapsed = 0;
-            alreadyCooked = false;
+                cookingTime++;
+                cookingFramesElapsed = 0;
+                alreadyCooked = false;
             }
             
-            if(cookingTime % timeToCook == 0 && cookingTime != 0 && !alreadyCooked) {
+            if (cookingTime % timeToCook == 0 && cookingTime != 0 && !alreadyCooked) {
                 alreadyCooked = true;
-                if(rarityCounter < 4){
+                if (rarityCounter < 4) {
                     rarityCounter++;
                 }
                 rarity = rarityArray[rarityCounter];
                 setImage("beef" + rarityCounter + ".png");
                 image = getImage();
-                image.scale(resizedImageWidth,resizedImageHeight);
+                image.scale(resizedImageWidth, resizedImageHeight);
             }
         }
     }
     
+    // stop the sizzle sound effect
     public void stopSizzle() {
-    sizzleSFX.stop();
+        sizzleSFX.stop();
     }
 }

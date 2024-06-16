@@ -69,7 +69,7 @@ public class BuildingWorld extends World
             orderTab.switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("h")) {
+        if(Greenfoot.isKeyDown("Left")) {
             plate.removeBeefs();
             plate.removeIngredients();
             removeObject(plate);

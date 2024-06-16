@@ -44,7 +44,7 @@ public class OrderingWorld extends World
             switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("k")){
+        if(Greenfoot.isKeyDown("Right")){
             plate.removeBeefs();
             plate.removeIngredients();
             removeObject(plate);

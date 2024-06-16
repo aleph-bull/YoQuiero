@@ -1,12 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 
-/**
- * Write a description of class Customer here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Customer extends Actor
 {
     private static Random rand = new Random();
@@ -67,9 +61,9 @@ public class Customer extends Actor
     private String[] rarityOpinionDialog = {"Mmmm, wrong rarity... ", "This is not the perfect sear. ", "Why does this meat taste funny? ", "I don't like how my meat is cooked. ",
                                     "I didn't ask for this rarity. ", "WRONG! Wrong rarity! "};
     
-    private String[] goodOpinionDialog = {"You did great! This tasted amazing", "This is perfect! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
+    private String[] goodOpinionDialog = {"You did great! This tasted amazing", "Yummy! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
                                     "Superb! Ultra tasty! I'll come again!", "Gracias! Muy bien!", "Wow this tastes like Taco Bell! Amazing! I don't quiero Taco Bell anymore.",
-                                    "I love this meal!", "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!"};
+                                    "I love this meal!", "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!", "Yummy! I feel jealous of myself 5 seconds ago!"};
     
     private String[] mediumOpinionDialog = {"This was alright I guess...", "You did just OK. ", "Wow this tastes mid...", "I almost like it... not really.", "Jeez... it's really mediocre",
                                     "Not terrible, but no compliments to the chef.", "It was okay... I still quiero Taco Bell."};
@@ -80,6 +74,7 @@ public class Customer extends Actor
     private String[] horribleOpinionDialog = {"This is a travesty.", "You may have just ruined my life.", "I'm stealing your money.", "You robbed my happiness.", "I'm grabbing the tip jar.",
                                     "I'm stealing 5 bucks, hope it was worth it."};
     
+    // integer variables for customer preferences
     private int desiredMeat = 0;
     private int desiredRarity = rand.nextInt(0, 5);
     private int desiredBeefAmnt = rand.nextInt(1, 6);
@@ -88,6 +83,7 @@ public class Customer extends Actor
     
     private int score;
                                     
+    // Greenfoot image and text-related variables
     private GreenfootImage image = getImage();
     private String name;
     private String completeOrderDialog = introDialog[rand.nextInt(0, introDialog.length)] + 
@@ -100,6 +96,7 @@ public class Customer extends Actor
     private Textbox textbox;
     private Nametag nametag;
     
+    // movement and state variables
     private boolean movingUp = true;
     private boolean movingDown = false;
     private boolean isSpeaking = false;
@@ -114,6 +111,7 @@ public class Customer extends Actor
     private int resizedImageHeight = image.getHeight()/2;
     private int waitFrames = 0;
     
+    // constructor
     public Customer(int customerTypeNumber, String name, OrderingWorld orderTab, PlateBack plate) {
         this.orderTab = orderTab;
         this.plate = plate;
@@ -124,6 +122,7 @@ public class Customer extends Actor
         image.scale(resizedImageWidth,resizedImageHeight);
     }
     
+    // main act method
     public void act()
     {
         moveToInitPosition();
@@ -131,7 +130,7 @@ public class Customer extends Actor
         sayOpinion();
     }
     
-    //moves the customer to y 170 when the customer spawns 
+    // moves the customer to y 170 when the customer spawns 
     private void moveToInitPosition() {
         if(!atInitPosition){
             if(movingUp && getY() >= 170) {
@@ -209,6 +208,7 @@ public class Customer extends Actor
          }
     }
     
+    // method to set opinion statement after eating
     public void setOpinionStatement(){
         if(!opinionStatementMade) {
             int choppedIngredientAmnt = 0;

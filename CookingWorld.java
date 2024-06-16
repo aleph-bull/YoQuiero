@@ -9,8 +9,8 @@ public class CookingWorld extends World
     private PlateBack plate;
     private MusicPlayer musicPlayer = MusicPlayer.getInstance();
     //flags to prevent instant skipping
-    private boolean kWasDown = false;
-    private boolean hWasDown = false;
+    private boolean leftWasDown = false;
+    private boolean rightWasDown = false;
     private boolean firstWorldSwitch = true;
     private boolean beefSpawned = false; 
     public CookingWorld(OrderingWorld orderTab)
@@ -36,12 +36,12 @@ public class CookingWorld extends World
                 addObject(new Beef(plate, this), 125, 120);
                 firstWorldSwitch = false;
             }
-            kWasDown = true;
-            hWasDown = true;
+            leftWasDown = true;
+            rightWasDown = true;
             orderTab.switchedWorld(false);
         }
         
-        if(Greenfoot.isKeyDown("h") && !hWasDown) {
+        if(Greenfoot.isKeyDown("Left") && !leftWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
@@ -50,7 +50,7 @@ public class CookingWorld extends World
             orderTab.addObject(plate, 310 + orderTab.getPlateDisplacement(true), 
                                       320 + orderTab.getPlateDisplacement(false));
             Greenfoot.setWorld(orderTab);
-        } else if (Greenfoot.isKeyDown("k") && !kWasDown) {
+        } else if (Greenfoot.isKeyDown("Right") && !rightWasDown) {
             stopAllSizzleSounds();
             plate.removeIngredients();
             plate.removeBeefs();
@@ -61,8 +61,8 @@ public class CookingWorld extends World
             Greenfoot.setWorld(buildTab);
         }
         
-        kWasDown = Greenfoot.isKeyDown("k");
-        hWasDown = Greenfoot.isKeyDown("h");
+        leftWasDown = Greenfoot.isKeyDown("Left");
+        rightWasDown = Greenfoot.isKeyDown("Right");
     }
     
     public void started() {
@@ -106,11 +106,11 @@ public class CookingWorld extends World
     }
     
     public boolean getHWasDown() {
-        return hWasDown;
+        return rightWasDown;
     }
     
     public boolean getKWasDown() {
-        return kWasDown;
+        return leftWasDown;
     }
     
     public void resetPlate() {
