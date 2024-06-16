@@ -1,20 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class PeanutButter here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class PeanutButter extends Actor
 {
     private GreenfootImage image = getImage();
     private PlateBack plate;
     private CuttingBoard cuttingBoard;
     private CuttingKnife cuttingKnife;
-    private int resizedImageWidth = image.getWidth()*11/10;
-    private int resizedImageHeight = image.getHeight()*11/10;
-    private int numChopsReq = 10; // chops it takes to become diced;
+    private BuildingWorld buildTab;
+    private int imageWidth = image.getWidth();
+    private int imageHeight = image.getHeight();
+    private int numChopsReq = 8; // chops it takes to become diced;
     private int numChopped = 0;
     private int imageScalePercent = 120; //will scale image up 20%
     private int framesElapsed = 0;
@@ -22,33 +17,34 @@ public class PeanutButter extends Actor
     private boolean isDragging = false;
     private boolean firstDrag = false;
     private boolean onCuttingBoard = false;
-    private boolean knifeOnPeanutButter = false;
+    private boolean localKnifeIsCutting = false;
     
     private boolean chopped = false; 
     GreenfootSound chopSFX = new GreenfootSound("chop.wav");
     
-    public PeanutButter(PlateBack plate, CuttingBoard cuttingBoard, CuttingKnife cuttingKnife) {
+    public PeanutButter(PlateBack plate, CuttingBoard cuttingBoard, CuttingKnife cuttingKnife, BuildingWorld buildTab) {
         this.plate = plate;
         this.cuttingBoard = cuttingBoard;
         this.cuttingKnife = cuttingKnife;
+        this.buildTab = buildTab;
     }
     
     public void act()
     {
         checkIfOnCuttingBoard();
-        cutPeanutButter();        
         checkMouse();
+        cutPeanutButter();   
     }
     
     private void checkMouse(){
         MouseInfo mouse = Greenfoot.getMouseInfo();
         boolean knifeAtObject = getWorld().getObjectsAt(getX(), getY(), CuttingKnife.class).contains(cuttingKnife);
         if (mouse != null) {
-            if (Greenfoot.mousePressed(this) || (knifeAtObject && Greenfoot.mousePressed(cuttingKnife))) {
+            if (Greenfoot.mousePressed(this) || (!buildTab.getKnifeIsCutting() && !localKnifeIsCutting && knifeAtObject && Greenfoot.mousePressed(cuttingKnife))) {
                 isDragging = true;
             }
             
-            if ((Greenfoot.mouseDragged(this) || (Greenfoot.mouseDragged(cuttingKnife))) && isDragging) {
+            if ((Greenfoot.mouseDragged(this) || (!buildTab.getKnifeIsCutting() && !localKnifeIsCutting && Greenfoot.mouseDragged(cuttingKnife))) && isDragging) {
                 setLocation(mouse.getX(), mouse.getY());
                 
                 if(!firstDrag) {
@@ -63,7 +59,7 @@ public class PeanutButter extends Actor
                 } 
             }
             
-            if (Greenfoot.mouseDragEnded(this) || (knifeAtObject && Greenfoot.mouseDragEnded(cuttingKnife))) {
+            if (Greenfoot.mouseDragEnded(this) || (Greenfoot.mouseDragEnded(cuttingKnife))) {
                 isDragging = false;
                 firstDrag = false;
                 
@@ -72,8 +68,7 @@ public class PeanutButter extends Actor
                     getWorld().removeObject(this);
                 }
                 
-                image.scale(resizedImageWidth,resizedImageHeight);
-                setImage(image);
+                image.scale(imageWidth,imageHeight);
             }
         }
     }
@@ -88,25 +83,27 @@ public class PeanutButter extends Actor
     }
     
     private void cutPeanutButter() {
-        if (Greenfoot.mouseClicked(this) && onCuttingBoard && !knifeOnPeanutButter) {
+        if (Greenfoot.mouseClicked(this) && onCuttingBoard && !buildTab.getKnifeIsCutting() && !localKnifeIsCutting) {
             cuttingKnife.setLocation(getX()+50, getY()+35);
             cuttingKnife.setRotation(-30);
             chopSFX.play();
             numChopped++;
-            knifeOnPeanutButter = true;
+            buildTab.setKnifeIsCutting(true);
+            localKnifeIsCutting = true;
         }  
-        if (knifeOnPeanutButter) {
+        if (localKnifeIsCutting && buildTab.getKnifeIsCutting()) {
             framesElapsed++;
             if(framesElapsed >= 10) {
                 framesElapsed = 0;
                 cuttingKnife.setLocation(550, 160);
                 cuttingKnife.setRotation(0);
-                knifeOnPeanutButter = false;
+                buildTab.setKnifeIsCutting(false);
+                localKnifeIsCutting = false;
             }
         }
-        if(numChopped >= numChopsReq && !isChopped) {
+        if(numChopped == numChopsReq && !isChopped) {
             setImage("peanutbutter1.png");
-            image.scale(resizedImageWidth,resizedImageHeight);
+            image.scale(imageWidth,imageHeight);
             image = getImage();
             isChopped = true;
         }

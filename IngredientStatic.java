@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class BeefStatic here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class IngredientStatic extends Actor
 {
     private GreenfootImage image = getImage();
@@ -15,10 +9,5 @@ public class IngredientStatic extends Actor
     
     public IngredientStatic() {
         image.scale(resizedImageWidth,resizedImageHeight);
-    }
-    
-    public void act()
-    {
-        // Add your action code here.
     }
 }

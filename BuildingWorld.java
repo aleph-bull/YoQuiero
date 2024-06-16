@@ -21,6 +21,7 @@ public class BuildingWorld extends World
     private boolean watermelonSpawned = false; 
     private boolean eggShellSpawned = false; 
     private boolean peanutButterSpawned = false; 
+    private boolean knifeIsCutting = false;
     private int plateDisplacementX = 165;
     private int plateDisplacementY = -10;
     
@@ -60,10 +61,10 @@ public class BuildingWorld extends World
             plate = orderTab.getPlate();
             addObject(plate, 310, 320);
             if(firstWorldSwitch) {
-                addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife), 100, 120);
-                addObject(new Watermelon(plate, cuttingBoard, cuttingKnife), 260, 120);
-                addObject(new EggShell(plate, cuttingBoard, cuttingKnife), 100, 255);
-                addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife), 260, 255);
+                addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife, this), 100, 120);
+                addObject(new Watermelon(plate, cuttingBoard, cuttingKnife, this), 260, 120);
+                addObject(new EggShell(plate, cuttingBoard, cuttingKnife, this), 100, 255);
+                addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife, this), 260, 255);
                 firstWorldSwitch = false;
             }
             orderTab.switchedWorld(false);
@@ -87,13 +88,14 @@ public class BuildingWorld extends World
                 if(!pumpkinSpawned) {
                     pumpkinSpawned = true;
                     System.out.println("Object Spawned!");
-                    addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife), 100, 120);
+                    addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife, this), 100, 120);
                 }
             } else {
                 pumpkinSpawned = false;
             }
         }
     }
+    
     private void grabWatermelon() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
@@ -102,7 +104,7 @@ public class BuildingWorld extends World
                 if(!watermelonSpawned) {
                     watermelonSpawned = true;
                     System.out.println("Object Spawned!");
-                    addObject(new Watermelon(plate, cuttingBoard, cuttingKnife), 260, 120);
+                    addObject(new Watermelon(plate, cuttingBoard, cuttingKnife, this), 260, 120);
                 }
             } else {
                 watermelonSpawned = false;
@@ -118,7 +120,7 @@ public class BuildingWorld extends World
                 if(!eggShellSpawned) {
                     eggShellSpawned = true;
                     System.out.println("Object Spawned!");
-                    addObject(new EggShell(plate, cuttingBoard, cuttingKnife), 100, 255);
+                    addObject(new EggShell(plate, cuttingBoard, cuttingKnife, this), 100, 255);
                 }
             } else {
                 eggShellSpawned = false;
@@ -134,7 +136,7 @@ public class BuildingWorld extends World
                 if(!peanutButterSpawned) {
                     peanutButterSpawned = true;
                     System.out.println("Object Spawned!");
-                    addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife), 260, 255);
+                    addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife, this), 260, 255);
                 }
             } else {
                 peanutButterSpawned = false;
@@ -151,5 +153,13 @@ public class BuildingWorld extends World
     
     public void resetPlate() {
         plate = orderTab.getPlate();
+    }
+    
+    public boolean getKnifeIsCutting() {
+        return knifeIsCutting;
+    }
+    
+    public void setKnifeIsCutting(boolean knifeIsCutting) {
+        this.knifeIsCutting = knifeIsCutting;
     }
 }

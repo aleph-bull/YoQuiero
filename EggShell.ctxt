@@ -1,8 +1,7 @@
 #BlueJ class context
 comment0.target=EggShell
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ EggShell\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=plate\ cuttingBoard\ cuttingKnife
-comment1.target=EggShell(PlateBack,\ CuttingBoard,\ CuttingKnife)
+comment1.params=plate\ cuttingBoard\ cuttingKnife\ buildTab
+comment1.target=EggShell(PlateBack,\ CuttingBoard,\ CuttingKnife,\ BuildingWorld)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
