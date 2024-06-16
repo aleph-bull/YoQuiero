@@ -36,7 +36,7 @@ public class MusicPlayer {
     }
     
     private void randomizeSong() {
-        currentSongIndex = rand.nextInt(playlist.size()); // pick a random song index
+        currentSongIndex = rand.nextInt(0, playlist.size()); // pick a random song index
     }
     
     public static MusicPlayer getInstance() {
@@ -58,6 +58,10 @@ public class MusicPlayer {
     public void pause() {
         currentSong.pause();
         isPaused = true;
+    }
+    
+    public void stop() {
+        currentSong.stop();
     }
     
     public void checkAndPlayNext() {
@@ -84,5 +88,6 @@ public class MusicPlayer {
             }
             play();
         }
+        
     }
 }
