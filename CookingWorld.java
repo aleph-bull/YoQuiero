@@ -77,12 +77,14 @@ public class CookingWorld extends World
     private void grabBeef() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
+            boolean isBeefPresent = !getObjectsAt(mouse.getX(), mouse.getY(), Beef.class).isEmpty();
             if(mouse.getX() > 60 && mouse.getY() > 75 
-            && mouse.getX() < 200 && mouse.getY() < 165 && Greenfoot.mousePressed(null)) {
+            && mouse.getX() < 200 && mouse.getY() < 165 && isBeefPresent && Greenfoot.mousePressed(null)) {
                 if(!beefSpawned) {
                     beefSpawned = true;
                     System.out.println("Object Spawned!");
                     addObject(new Beef(plate, this), 125, 123);
+                    orderTab.addToWallet(-4);
                 }
             } else {
                 beefSpawned = false;

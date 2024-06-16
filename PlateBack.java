@@ -96,7 +96,6 @@ public class PlateBack extends Actor
         }
     }
     public void storeBeef(int rarity, int xCoord, int yCoord){
-        orderTab.addToWallet(-5);
         BeefStatic beefImage = new BeefStatic();
         beefRarity.add(rarity);
         beefPosition.add(new int[] {xCoord, yCoord});
@@ -111,7 +110,6 @@ public class PlateBack extends Actor
     }
     
     public void storeIngredient(int type, boolean isChopped, int xCoord, int yCoord){
-        orderTab.addToWallet(-2);
         IngredientStatic ingredientImage = new IngredientStatic();
         ingredientPicList.add(ingredientImage);
         int displacementY = buildTab.getPlateDisplacement(false);

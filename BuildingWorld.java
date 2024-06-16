@@ -83,12 +83,14 @@ public class BuildingWorld extends World
     private void grabPumpkin() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
+            boolean isPumpkinPresent = !getObjectsAt(mouse.getX(), mouse.getY(), Pumpkin.class).isEmpty();
             if(mouse.getX() > 40 && mouse.getY() > 70 
-            && mouse.getX() < 170 && mouse.getY() < 170 && Greenfoot.mousePressed(null)) {
+            && mouse.getX() < 170 && mouse.getY() < 170 && isPumpkinPresent && Greenfoot.mousePressed(null)) {
                 if(!pumpkinSpawned) {
                     pumpkinSpawned = true;
                     System.out.println("Object Spawned!");
                     addObject(new Pumpkin(plate, cuttingBoard, cuttingKnife, this), 100, 120);
+                    orderTab.addToWallet(-2);
                 }
             } else {
                 pumpkinSpawned = false;
@@ -99,12 +101,14 @@ public class BuildingWorld extends World
     private void grabWatermelon() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
+            boolean isWatermelonPresent = !getObjectsAt(mouse.getX(), mouse.getY(), Watermelon.class).isEmpty();
             if(mouse.getX() > 200 && mouse.getY() > 70 
-            && mouse.getX() < 320 && mouse.getY() < 170 && Greenfoot.mousePressed(null)) {
+            && mouse.getX() < 320 && mouse.getY() < 170 && isWatermelonPresent && Greenfoot.mousePressed(null)) {
                 if(!watermelonSpawned) {
                     watermelonSpawned = true;
                     System.out.println("Object Spawned!");
                     addObject(new Watermelon(plate, cuttingBoard, cuttingKnife, this), 260, 120);
+                    orderTab.addToWallet(-2);
                 }
             } else {
                 watermelonSpawned = false;
@@ -115,12 +119,14 @@ public class BuildingWorld extends World
     private void grabEggShell() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
+            boolean isEggShellPresent = !getObjectsAt(mouse.getX(), mouse.getY(), EggShell.class).isEmpty();
             if(mouse.getX() > 40 && mouse.getY() > 200 
-            && mouse.getX() < 170 && mouse.getY() < 300 && Greenfoot.mousePressed(null)) {
+            && mouse.getX() < 170 && mouse.getY() < 300 && isEggShellPresent && Greenfoot.mousePressed(null)) {
                 if(!eggShellSpawned) {
                     eggShellSpawned = true;
                     System.out.println("Object Spawned!");
                     addObject(new EggShell(plate, cuttingBoard, cuttingKnife, this), 100, 255);
+                    orderTab.addToWallet(-3);
                 }
             } else {
                 eggShellSpawned = false;
@@ -131,12 +137,14 @@ public class BuildingWorld extends World
     private void grabPeanutButter() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
+            boolean isPeanutButterPresent = !getObjectsAt(mouse.getX(), mouse.getY(), PeanutButter.class).isEmpty();
             if(mouse.getX() > 200 && mouse.getY() > 200 
-            && mouse.getX() < 320 && mouse.getY() < 300 && Greenfoot.mousePressed(null)) {
+            && mouse.getX() < 320 && mouse.getY() < 300 && isPeanutButterPresent && Greenfoot.mousePressed(null)) {
                 if(!peanutButterSpawned) {
                     peanutButterSpawned = true;
                     System.out.println("Object Spawned!");
                     addObject(new PeanutButter(plate, cuttingBoard, cuttingKnife, this), 260, 255);
+                    orderTab.addToWallet(-1);
                 }
             } else {
                 peanutButterSpawned = false;

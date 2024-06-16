@@ -7,6 +7,7 @@ public class WinningScreen extends World
     {    
         super(600, 400, 1); 
         Greenfoot.playSound("win.mp3");
+        musicPlayer.play();
     }
     public void act() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
