@@ -68,7 +68,6 @@ public class MainMenu extends World {
     InstructionsButton instructionsButton = new InstructionsButton();
     private MusicPlayer musicPlayer = MusicPlayer.getInstance();
     
-    // Constructor for MainMenu - sets up the main menu screen with buttons.
     public MainMenu() {    
         super(600, 400, 1); 
         addObject(playButton, 110, 190);

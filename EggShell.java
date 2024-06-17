@@ -102,7 +102,7 @@ public class EggShell extends Actor
             }
         }
         if(numChopped == numChopsReq && !isChopped) {
-            setImage("eggshell1.png");
+            setImage("eggshell1.png"); //update image to chopped state
             image.scale(imageWidth,imageHeight);
             image = getImage();
             isChopped = true;

@@ -10,7 +10,7 @@ public class Customer extends Actor
     
     private String[] rarityArray = {"raw", "rare", "medium", "well", "ash"};
         
-    //dialog
+    // dialog arrays for various customer interactions
     private String[] introDialog = {"Hi! I'd like ", "Yo yo yo! Gimme ", "What up! I want ", "I'm starving! I want ", 
                                     "Salutations good sir, I would be delighted to have ", "I'm so hungry, I could eat ", 
                                     "Mmmm I really need ", "Jeez, I could really go for some ", "Hey tubby, give me ", 
@@ -24,37 +24,28 @@ public class Customer extends Actor
                                     "Need fuel! Give me ", "Hurry up! I’ll take ", "Feeling adventurous! How about ",
                                     "Feeling daring! Give me ", "I’m ravenous! Serve me "};
                                     
-    private String[][][] beefDialog = 
-    {
-        {//beef
-            {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge", "some raw carne asada", "raw steak", "uncooked beef", "meat straight from the cow"},         //raw
-            {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef" , "some rare carne asada", "lightly cooked steak", "beef, just kissed by heat", "barely seared meat"},        //rare
-            {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well", "medium carne asada", "medium rare steak", "properly grilled beef", "meat, cooked just right"},        //medium
-            {"well done beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all", "well done carne asada", "well cooked steak", "thoroughly grilled beef", "meat, no pink"},     //well
-            {"ashy beef", "non-vegan coal", "animal carbon", "cancer causing beef", "combustible beef rock", "carbón de res", "charred beef", "beef, burnt to a crisp", "blackened steak"}   //ash
-        },
-        { //veggie
-            {"fresh veggies", "uncooked greens", "raw garden produce"}, // raw
-            {"lightly steamed veggies", "barely cooked greens", "crunchy vegetables"}, // rare
-            {"perfectly steamed veggies", "tender greens", "vegetables, just right"}, // medium
-            {"soft veggies", "well-cooked greens", "tender vegetables"}, // well
-            {"overcooked veggies", "mushy greens", "burnt vegetables"} // ash
-        }
+    private String[][] beefDialog = 
+    {//beef
+        {"raw beef", " beef, still mooing", "the rarest beef you have", "fresh beef from the fridge", "some raw carne asada", "raw steak", "uncooked beef", "meat straight from the cow"},         //raw
+        {"rare beef", "beef, still bleeding please", "beef with a light sear", "barely cooked beef" , "some rare carne asada", "lightly cooked steak", "beef, just kissed by heat", "barely seared meat"},        //rare
+        {"medium beef", "beef, cooked to perfection", "beef that's not too rare, but not too well", "medium carne asada", "medium rare steak", "properly grilled beef", "meat, cooked just right"},        //medium
+        {"well done beef", "beef, cooked beyond perfection", "chewy rough beef", "beef, no blood at all", "well done carne asada", "well cooked steak", "thoroughly grilled beef", "meat, no pink"},     //well
+        {"ashy beef", "non-vegan coal", "animal carbon", "cancer causing beef", "combustible beef rock", "carbón de res", "beef, burnt to a crisp", "blackened steak"}   //ash
     };
-    
+
     private String [][] ingredientDialog =
     {
         {//pumpkin
-            "pumpkin", "orange outside fruit", "orange inside fruit", "orange squash", "autumn fruit", "halloween decor", "squash", "orange veggie", "fall favorite"
+            "pumpkin", "orange outside fruit", "orange inside fruit", "orange squash", "autumn fruit", "halloween decor", "squash", "pie fruit"
         },
         {//watermelon
-            "watermelon", "green outside fruit", "red inside fruit", "that thing that is mostly water", "sweet summer fruit", "summer fruit", "hydrating fruit", "sweet melon"
+            "watermelon", "green outside fruit", "red inside fruit", "that thing that is mostly water", "sweet summer fruit", "summer fruit", "hydrating fruit"
         },
         {//egg shells
             "egg shell", "white crunchy stuff", "dairy product", "calcium carbonate", "chicken birth pod", "breakfast garbage", "crunchy shells", "breakfast remains", "white scraps"
         },
         {//peanut butter
-            "peanut butter", "squeezed oils from plant", "legumenade", "middle school contraband", "any legume item you have", "nutty spread", "sticky stuff", "creamy delight"
+            "peanut butter", "squeezed oils from plant", "legumenade", "middle school contraband", "any legume item you have", "yummy spread", "sticky stuff"
         }
     };
     
@@ -75,7 +66,7 @@ public class Customer extends Actor
     
     private String[] noBeefDialog = {"No beef? What is even the point. ", "Did I just eat nothing? ", "Where is my beef! I will riot! ", "If it were up to me I would use you for beef... ",
                                      "It's not a full meal without meat! ", "Dogs like meat! Where is my meat! ", "Where’s the beef?", "No meat?", "Missing the main part!", 
-                                     "No beef here!", "Need my protein!", "I wanted meat!", "Meat is missing!", "No beef? Really?", "Where is it?"};
+                                     "No beef here!", "Need my protein!", "I wanted meat!", "Meat is missing!", "No beef? Really?"};
                                     
     private String[] rarityOpinionDialog = {"Mmmm, wrong rarity... ", "This is not the perfect sear. ", "Why does this meat taste funny? ", "I don't like how my meat is cooked. ",
                                             "I didn't ask for this rarity. ", "WRONG! Wrong rarity! ", "Wrong cook level!", "Not cooked right.", "I asked for different.",
@@ -84,7 +75,7 @@ public class Customer extends Actor
     private String[] goodOpinionDialog = {"You did great! This tasted amazing", "Yummy! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
                                           "Superb! Ultra tasty! I'll come again!", "Gracias! Muy bien!", "Wow this tastes like Taco Bell! Amazing! I don't quiero Taco Bell anymore.",
                                           "I love this meal!", "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!", "Yummy! I feel jealous of myself 5 seconds ago!",
-                                          "Fantastic meal!", "Love this!", "Great job, chef!", "This is amazing!", "Tasty!", "Delicious food!", "Yummy!", "I’m happy!", "Super tasty!"};
+                                          "Fantastic meal!", "Love this!", "Great job, chef!", "This is amazing!", "Tasty!", "Delicious food!", "Super tasty!"};
     
     private String[] mediumOpinionDialog = {"This was alright I guess...", "You did just OK. ", "Wow this tastes mid...", "I almost like it... not really.", "Jeez... it's really mediocre",
                                             "Not terrible, but no compliments to the chef.", "It was okay... I still quiero Taco Bell.", "Just okay.", "It's alright.", "Not bad, not great.",
@@ -92,14 +83,12 @@ public class Customer extends Actor
                                     
     private String[] badOpinionDialog = {"Horrible!", "You did NOT do good in the SLIGHTEST!", "I wish I went to Taco Bell...", "Is this even safe to consume?", "I HATED eating this!",
                                          "Fire the chef! Please!", "Not good at all.", "What is wrong with you?", "I don't like you.", "My taste buds suffer...", "Horrible taste.", 
-                                         "Not good at all.", "I dislike this.", "Terrible.", "Bad meal.", "This is awful.", "I hate it.", "Very bad.", "Never again."};
+                                         "Not good at all.", "Never again."};
                                     
-    private String[] horribleOpinionDialog = {"This is a travesty.", "You may have just ruined my life.", "I'm stealing your money.", "You robbed my happiness.", "I'm grabbing the tip jar.",
-                                              "I'm stealing 5 bucks, hope it was worth it.", "Worst ever.", "Ruined my day.", "Terrible job!", "Disgusting.", "I’m stealing!", 
-                                              "Horrible chef.", "Awful.", "Bad experience.", "You owe me."};
+    private String[] horribleOpinionDialog = {"You make me want to commit crime", "This meal gave grounds to sue.", "I'm stealing your money.", "I'm grabbing the tip jar.",
+                                              "I'm stealing 5 bucks, hope it was worth it.", "You stole my joy so I'll steal your money.", "Your 5 bucks is now mine!"};
     
     // integer variables for customer preferences
-    private int desiredMeat = 0;
     private int desiredRarity = rand.nextInt(5);
     private int desiredBeefAmnt = rand.nextInt(1, 6);
     private int desiredIngredient = rand.nextInt(4);
@@ -107,11 +96,10 @@ public class Customer extends Actor
     
     private int score;
                                     
-    // Greenfoot image and text-related variables
     private GreenfootImage image = getImage();
     private String name;
     private String completeOrderDialog = introDialog[rand.nextInt(introDialog.length)] + 
-                                    beefDialog[desiredMeat][desiredRarity][rand.nextInt(beefDialog[desiredMeat][desiredRarity].length)] +
+                                    beefDialog[desiredRarity][rand.nextInt(beefDialog[desiredRarity].length)] +
                                     ". " + desiredBeefAmnt + " serving" + (desiredBeefAmnt == 1 ?"": "s") + " of that, and give me " + 
                                     desiredIngredientAmnt + " serving" + (desiredIngredientAmnt == 1 ?"": "s") +" of " +
                                     ingredientDialog[desiredIngredient][rand.nextInt(ingredientDialog[desiredIngredient].length)] + ".";
@@ -121,7 +109,6 @@ public class Customer extends Actor
     private Textbox textbox;
     private Nametag nametag;
     
-    // movement and state variables
     private boolean movingUp = true;
     private boolean movingDown = false;
     private boolean isSpeaking = false;
@@ -136,7 +123,7 @@ public class Customer extends Actor
     private int resizedImageHeight = image.getHeight()/2;
     private int waitFrames = 0;
     
-    // constructor
+
     public Customer(int customerTypeNumber, String name, OrderingWorld orderTab, PlateBack plate) {
         this.orderTab = orderTab;
         this.plate = plate;
@@ -233,7 +220,7 @@ public class Customer extends Actor
          }
     }
     
-    // method to set opinion statement after eating
+    //method to set opinion statement before food disapears
     public void setOpinionStatement(){
         if(!opinionStatementMade) {
             int choppedIngredientAmnt = 0;
@@ -242,6 +229,7 @@ public class Customer extends Actor
             
             boolean hasCritque = false;
             
+            //counts various stats
             for(int i = 0; i < plate.getIngredientIsChopped().size(); i++){
                 choppedIngredientAmnt++;
             }
@@ -306,9 +294,6 @@ public class Customer extends Actor
                 score = -5; //makes it so you lose money
             }
         }
-    }
-    public int getDesiredMeat(){
-        return desiredMeat;
     }
     
     public int getDesiredRarity() {

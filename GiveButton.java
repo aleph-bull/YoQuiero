@@ -50,8 +50,7 @@ public class GiveButton extends Actor
     }
     
     private void gradeFood() {
-        ScoringSystem scoringSystem = new ScoringSystem(plate.getBeefRarity(), plate.getIngredientType(), plate.getIngredientIsChopped(),
-        customer.getDesiredMeat(), customer.getDesiredRarity(), customer.getDesiredBeefAmnt(), customer.getDesiredIngredient(), customer.getDesiredIngredientAmnt());
+        ScoringSystem scoringSystem = new ScoringSystem(plate.getBeefRarity(), plate.getIngredientType(), plate.getIngredientIsChopped(), customer.getDesiredRarity(), customer.getDesiredBeefAmnt(), customer.getDesiredIngredient(), customer.getDesiredIngredientAmnt());
         
         score = scoringSystem.calculateScore();
         customer.setScore(score);
