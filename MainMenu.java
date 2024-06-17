@@ -42,7 +42,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
         https://www.istockphoto.com/photo/arrow-keys-gm173938180-9718383?searchscope=image%2Cfilm
         https://www.istockphoto.com/photo/business-dog-gm518246356-89921317
         https://x.com/eth_dogwifhat/status/1754924678555017588
-        
+        https://www.reddit.com/r/MemeRestoration/comments/16hz5lh/anyone_have_the_nerd_dog_in_hq/
+        https://mullikenet.shop/product_details/40076894.html
         
     Sound Credits: 
         https://pixabay.com/sound-effects/sizzling-frying-pan-201293/
