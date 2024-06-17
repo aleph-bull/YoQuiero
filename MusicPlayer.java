@@ -47,7 +47,9 @@ public class MusicPlayer {
     }
     
     public void play() {
-        if (currentSong != null && currentSong.isPlaying()) {
+        if(currentSong == null) {
+            randomizeSong();
+        } else if (currentSong.isPlaying()) {
             return; // if the current song is already playing, do nothing
         }
         currentSong = playlist.get(currentSongIndex);

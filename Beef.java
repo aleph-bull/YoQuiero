@@ -10,8 +10,8 @@ public class Beef extends Actor {
     private int cookingTime = 0; // in seconds
     private int timeToCook = 3;
     private int cookingFramesElapsed = 0;
-    private int resizedImageWidth = image.getWidth() * 11 / 10;
-    private int resizedImageHeight = image.getHeight() * 11 / 10;
+    private int imageWidth = image.getWidth();
+    private int imageHeight = image.getHeight();
     private int imageScalePercent = 120; // will scale image up 20%
     private boolean isDragging = false;
     private boolean firstDrag = false;
@@ -22,7 +22,7 @@ public class Beef extends Actor {
     private PlateBack plate;
  
     public Beef(PlateBack plate, CookingWorld cookTab) {
-        image.scale(resizedImageWidth, resizedImageHeight);
+        image.scale(imageWidth, imageHeight);
         this.plate = plate;
     }
     
@@ -62,7 +62,7 @@ public class Beef extends Actor {
                     getWorld().removeObject(this);
                 }
                 
-                image.scale(resizedImageWidth, resizedImageHeight);
+                image.scale(imageWidth, imageHeight);
                 setImage(image);
             }
         }
@@ -96,7 +96,7 @@ public class Beef extends Actor {
                 rarity = rarityArray[rarityCounter];
                 setImage("beef" + rarityCounter + ".png");
                 image = getImage();
-                image.scale(resizedImageWidth, resizedImageHeight);
+                image.scale(imageWidth, imageHeight);
             }
         }
     }

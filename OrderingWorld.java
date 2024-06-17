@@ -14,7 +14,7 @@ public class OrderingWorld extends World
     private int plateDisplacementX = 40;
     private int plateDisplacementY = -35;
     
-    private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Skeptical Dog", "Hot Dog", "Canine-ibal Dog", "Blooming Dog"};
+    private String[] customers = {"Taco Dog", "Walter Dog", "Melon Dog", "Not a Dog", "Stoop Dog", "Destroyer Dog", "Princess Dog", "Auraless Dog", "Skeptical Dog", "Hot Dog", "Canine-ibal Dog", "Blooming Dog", "Business Dog", "Diamond Dog", "Gamer Dog", "Nerd Dog"};
     private int customerTypeNumber;
     private String customerTypeName;
     private boolean customerOrdering = false; 

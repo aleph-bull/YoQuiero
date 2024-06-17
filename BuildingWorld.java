@@ -84,8 +84,8 @@ public class BuildingWorld extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
             boolean isPumpkinPresent = !getObjectsAt(mouse.getX(), mouse.getY(), Pumpkin.class).isEmpty();
-            if(mouse.getX() > 40 && mouse.getY() > 70 
-            && mouse.getX() < 170 && mouse.getY() < 170 && isPumpkinPresent && Greenfoot.mousePressed(null)) {
+            if(mouse.getX() > 58 && mouse.getY() > 75 
+            && mouse.getX() < 142 && mouse.getY() < 165 && isPumpkinPresent && Greenfoot.mousePressed(null)) {
                 if(!pumpkinSpawned) {
                     pumpkinSpawned = true;
                     System.out.println("Object Spawned!");
@@ -102,8 +102,8 @@ public class BuildingWorld extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
             boolean isWatermelonPresent = !getObjectsAt(mouse.getX(), mouse.getY(), Watermelon.class).isEmpty();
-            if(mouse.getX() > 200 && mouse.getY() > 70 
-            && mouse.getX() < 320 && mouse.getY() < 170 && isWatermelonPresent && Greenfoot.mousePressed(null)) {
+            if(mouse.getX() > 218 && mouse.getY() > 75 
+            && mouse.getX() < 302 && mouse.getY() < 165 && isWatermelonPresent && Greenfoot.mousePressed(null)) {
                 if(!watermelonSpawned) {
                     watermelonSpawned = true;
                     System.out.println("Object Spawned!");
@@ -120,8 +120,8 @@ public class BuildingWorld extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
             boolean isEggShellPresent = !getObjectsAt(mouse.getX(), mouse.getY(), EggShell.class).isEmpty();
-            if(mouse.getX() > 40 && mouse.getY() > 200 
-            && mouse.getX() < 170 && mouse.getY() < 300 && isEggShellPresent && Greenfoot.mousePressed(null)) {
+            if(mouse.getX() > 58 && mouse.getY() > 210 
+            && mouse.getX() < 142 && mouse.getY() < 300 && isEggShellPresent && Greenfoot.mousePressed(null)) {
                 if(!eggShellSpawned) {
                     eggShellSpawned = true;
                     System.out.println("Object Spawned!");
@@ -138,8 +138,8 @@ public class BuildingWorld extends World
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null) {
             boolean isPeanutButterPresent = !getObjectsAt(mouse.getX(), mouse.getY(), PeanutButter.class).isEmpty();
-            if(mouse.getX() > 200 && mouse.getY() > 200 
-            && mouse.getX() < 320 && mouse.getY() < 300 && isPeanutButterPresent && Greenfoot.mousePressed(null)) {
+            if(mouse.getX() > 218 && mouse.getY() > 210 
+            && mouse.getX() < 302 && mouse.getY() < 300 && isPeanutButterPresent && Greenfoot.mousePressed(null)) {
                 if(!peanutButterSpawned) {
                     peanutButterSpawned = true;
                     System.out.println("Object Spawned!");

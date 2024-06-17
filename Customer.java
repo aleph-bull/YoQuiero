@@ -49,37 +49,39 @@ public class Customer extends Actor
         }
     };
     
-    private String[] choppingOpinionDialog = {"Could use some chopping... ", "Use a cutting board for once! ", "These toppings hurt to eat, chop it up!",
-                                              "It barely fit into my mouth! ", "I think I dislocated my jaw! I may sue! ", "Chop it finer!", "Could use more chopping.", 
-                                              "These chunks are huge!", "Please dice it!", "It’s too chunky!", "Chop it better next time.", "Could you mince it?", 
-                                              "Needs finer chopping.", "Too big to chew!"};
+    private String[] choppingOpinionDialog = {"Could use some chopping... ", "Use a cutting board for once! ", "These toppings hurt to eat, chop it up! ",
+                                              "It barely fit into my mouth! ", "I think I dislocated my jaw! I may sue! ", "Chop it finer! ", "Could use more chopping. ", 
+                                              "These chunks are huge! ", "Please dice it! ", "It’s too chunky! ", "Chop it better next time. ", "Can you mince it? Jeez. ", 
+                                              "Needs finer chopping. ", "Too big to chew! "};
                                     
     private String[] ingredientOpinionDialog = {"I did not ask for these toppings! ", "Taco Bell would've done my toppings better... ", "Did you mess up my toppings? ",
                                                 "Wrong topping my friend. ", "I don't think I asked for these toppings ", "I do not like how these toppings taste. ", 
-                                                "Not what I wanted!", "Wrong topping!", "Did you mix it up?", "This isn't right.", "I asked for something else.", 
-                                                "I don’t like this.", "Wrong ingredients!", "These aren't mine.", "Not what I ordered."};
+                                                "I am not the father to these toppings. ", "These toppings aren't mine. ", "WRONG! Wrong topping! ", "INCORRECT!! Wrong topping! ",
+                                                "EHH!! Wrong toppings! "};
     
     private String[] noIngredientDialog = {"No toppings? ", "Give me my toppings! ", "I guess you don't like me enough to give me toppings. ", "This is so sad, where are my toppings. ",
                                            "Are these toppings invisible? ", "Do I have to protest for toppings? ", "I think you forgot something. ", "No toppings?", 
-                                           "Where are my toppings?", "I need my toppings!", "Forgot the toppings?", "Toppings missing!", "No toppings at all?", 
-                                           "This needs toppings.", "Where’s my extra?", "I wanted toppings!"};
+                                           "Where are my toppings? ", "I need my toppings! ", "Forgot the toppings? ", "Toppings missing! ", "No toppings at all? ", 
+                                           "This needs toppings. ", "I wanted toppings! ", "Where are my TOPPINGS! "};
     
     private String[] noBeefDialog = {"No beef? What is even the point. ", "Did I just eat nothing? ", "Where is my beef! I will riot! ", "If it were up to me I would use you for beef... ",
-                                     "It's not a full meal without meat! ", "Dogs like meat! Where is my meat! ", "Where’s the beef?", "No meat?", "Missing the main part!", 
-                                     "No beef here!", "Need my protein!", "I wanted meat!", "Meat is missing!", "No beef? Really?"};
+                                     "It's not a full meal without meat! ", "Dogs like meat! Where is my meat! ", "Where’s the beef? ", "No meat? ", "Missing the main part! ", 
+                                     "No beef here! ", "I'm a dog, I need my protein! ", "I wanted meat! ", "Meat is missing! ", "No beef? Really? "};
                                     
     private String[] rarityOpinionDialog = {"Mmmm, wrong rarity... ", "This is not the perfect sear. ", "Why does this meat taste funny? ", "I don't like how my meat is cooked. ",
-                                            "I didn't ask for this rarity. ", "WRONG! Wrong rarity! ", "Wrong cook level!", "Not cooked right.", "I asked for different.",
-                                            "This isn’t right.", "Cook it better.", "This is not my order.", "Cooked wrong.", "Different rarity!", "Not what I wanted."};
+                                            "I didn't ask for this rarity. ", "WRONG! Wrong rarity! ", "Wrong cook level! ", "Not cooked right. ",
+                                            "You're INCORRECT! Wrong rarity! ", "I wanted different rarity! ", "Not what I wanted. "};
     
     private String[] goodOpinionDialog = {"You did great! This tasted amazing", "Yummy! That was the BOMB.COM!", "Absolutely delicous, I am delighted to be served by such a talented chef.",
                                           "Superb! Ultra tasty! I'll come again!", "Gracias! Muy bien!", "Wow this tastes like Taco Bell! Amazing! I don't quiero Taco Bell anymore.",
-                                          "I love this meal!", "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!", "Yummy! I feel jealous of myself 5 seconds ago!",
-                                          "Fantastic meal!", "Love this!", "Great job, chef!", "This is amazing!", "Tasty!", "Delicious food!", "Super tasty!"};
+                                          "This tastes SO GOOD! Will you be my owner?", "This is the greatest meal I have eaten!", "Yummy! I feel jealous of myself 5 seconds ago!",
+                                          "Bone apple teeth levels of good!", "The chef needs a raise! Heres a tip!", "Delicious food! Yum yum yum!", "This is so Taco Bell esque!", "This is one of the BEST! Thanks!",
+                                          "I don't think anything can top that meal!", "I have ascended after this meal. Thank you for enlightening me to what this world has to offer.",
+                                          "This is SUPER DUPER TASTY! Excellent!"};
     
     private String[] mediumOpinionDialog = {"This was alright I guess...", "You did just OK. ", "Wow this tastes mid...", "I almost like it... not really.", "Jeez... it's really mediocre",
-                                            "Not terrible, but no compliments to the chef.", "It was okay... I still quiero Taco Bell.", "Just okay.", "It's alright.", "Not bad, not great.",
-                                            "Meh.", "Could be better.", "It’s fine.", "Alright.", "Not the best.", "Pretty average."};
+                                            "Not terrible, but no compliments to the chef.", "It was okay... I still quiero Taco Bell.", "Just okay.", "Not bad, not good.",
+                                            "Meh.", "Could be better.", "It’s fine.", "It's alright.", "Not your best.", "Pretty average.", "This is one of the meals of all time."};
                                     
     private String[] badOpinionDialog = {"Horrible!", "You did NOT do good in the SLIGHTEST!", "I wish I went to Taco Bell...", "Is this even safe to consume?", "I HATED eating this!",
                                          "Fire the chef! Please!", "Not good at all.", "What is wrong with you?", "I don't like you.", "My taste buds suffer...", "Horrible taste.", 
